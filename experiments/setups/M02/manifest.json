@@ -1,0 +1,26 @@
+{
+  "id": "M02",
+  "minimum_per_kind": 2,
+  "members": {
+    "skills": [
+      "M02-skill-a",
+      "M02-skill-b"
+    ],
+    "hooks": [
+      "H03",
+      "H04"
+    ],
+    "mcps": [
+      "M02-mcp-a",
+      "M02-mcp-b"
+    ],
+    "settings": [
+      "S02",
+      "S03"
+    ],
+    "subagents": [
+      "M02-agent-a",
+      "M02-agent-b"
+    ]
+  }
+}

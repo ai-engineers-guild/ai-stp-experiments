@@ -1,6 +1,16 @@
 harnesses.local.yaml
 runs/
 _runs/
+_generated/
+results/
+**/results.yaml
+**/logs/
+_doctor/
+observer/
+pre-state/
+*.stdout
+*.stderr
+*.log
 __pycache__/
 .ruff_cache/
 .venv/

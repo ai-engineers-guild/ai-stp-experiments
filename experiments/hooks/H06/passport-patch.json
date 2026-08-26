@@ -1,0 +1,40 @@
+{
+  "name": "experiment-h06-preinvocation",
+  "description": "Deterministic hook fixture experiment-h06-preinvocation.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "hook",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/hooks.json",
+    "config/hooks/h06.py"
+  ],
+  "native_ids": [
+    "PreInvocation:*"
+  ],
+  "entry_points": [
+    "hooks.PreInvocation"
+  ],
+  "runtime_requirements": [
+    "python>=3.11"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

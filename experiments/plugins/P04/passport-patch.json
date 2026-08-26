@@ -1,0 +1,37 @@
+{
+  "name": "ai-stp-p04-plugin",
+  "description": "Deterministic plugin fixture ai-stp-p04-plugin.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "plugin",
+  "projection_kind": "plugin",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "antigravity-cli/plugins/ai-stp-p04-plugin/MARKER.txt",
+    "antigravity-cli/plugins/ai-stp-p04-plugin/plugin.json",
+    "antigravity-cli/plugins/ai-stp-p04-plugin/skills/ai-stp-p04-plugin/SKILL.md"
+  ],
+  "native_ids": [
+    "ai-stp-p04-plugin"
+  ],
+  "entry_points": [
+    "plugin.json"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

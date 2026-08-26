@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "M04-mcp-a": {
+      "command": "python",
+      "args": [
+        "-c",
+        "print('AI_STP_M04_MCP_A')"
+      ]
+    }
+  }
+}

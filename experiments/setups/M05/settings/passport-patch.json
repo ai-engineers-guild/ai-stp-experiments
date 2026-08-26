@@ -1,0 +1,37 @@
+{
+  "name": "m05-settings",
+  "description": "Deterministic setting fixture m05-settings.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "setting",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "antigravity-cli/settings.json"
+  ],
+  "native_ids": [
+    "verbosity",
+    "enableTelemetry"
+  ],
+  "entry_points": [
+    "verbosity",
+    "enableTelemetry"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

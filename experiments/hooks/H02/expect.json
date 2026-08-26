@@ -1,0 +1,10 @@
+{
+  "id": "H02",
+  "event": "PreToolUse",
+  "matcher": "list_dir",
+  "marker": "AI_STP_H02_PRETOOLUSE",
+  "output": {
+    "decision": "allow",
+    "reason": "AI_STP_H02_ALLOW"
+  }
+}

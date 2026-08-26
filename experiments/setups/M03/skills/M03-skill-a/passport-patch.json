@@ -1,0 +1,35 @@
+{
+  "name": "M03-skill-a",
+  "description": "Deterministic skill fixture M03-skill-a.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "skill",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/skills/M03-skill-a/SKILL.md"
+  ],
+  "native_ids": [
+    "M03-skill-a"
+  ],
+  "entry_points": [
+    "SKILL.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

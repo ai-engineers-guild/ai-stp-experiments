@@ -1,0 +1,41 @@
+{
+  "name": "m04-mcps",
+  "description": "Deterministic mcp fixture m04-mcps.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "mcp",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/mcp_config.json"
+  ],
+  "native_ids": [
+    "M04-mcp-a",
+    "M04-mcp-b"
+  ],
+  "entry_points": [
+    "mcpServers.M04-mcp-a",
+    "mcpServers.M04-mcp-b"
+  ],
+  "runtime_requirements": [
+    "windows-cmd"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

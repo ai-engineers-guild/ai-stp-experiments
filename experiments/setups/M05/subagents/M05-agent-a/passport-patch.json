@@ -1,0 +1,35 @@
+{
+  "name": "M05-agent-a",
+  "description": "Deterministic agent fixture M05-agent-a.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "agent",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/agents/M05-agent-a.md"
+  ],
+  "native_ids": [
+    "M05-agent-a"
+  ],
+  "entry_points": [
+    "M05-agent-a.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

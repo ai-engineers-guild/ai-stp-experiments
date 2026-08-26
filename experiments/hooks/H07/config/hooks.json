@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostInvocation": [
+      {
+        "type": "command",
+        "command": "python config/hooks/h07.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

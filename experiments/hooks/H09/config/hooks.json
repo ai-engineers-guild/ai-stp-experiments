@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python config/hooks/h09.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

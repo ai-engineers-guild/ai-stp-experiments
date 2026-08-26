@@ -1,0 +1,41 @@
+{
+  "name": "m04-hooks",
+  "description": "Deterministic hook fixture m04-hooks.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "hook",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/hooks.json",
+    "config/hooks/h07.py",
+    "config/hooks/h08.py"
+  ],
+  "native_ids": [
+    "PostInvocation"
+  ],
+  "entry_points": [
+    "hooks.PostInvocation"
+  ],
+  "runtime_requirements": [
+    "python>=3.11"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

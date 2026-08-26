@@ -1,0 +1,10 @@
+{
+  "id": "H08",
+  "event": "PostInvocation",
+  "matcher": null,
+  "marker": "AI_STP_H08_POSTINVOCATION",
+  "output": {
+    "injectSteps": [],
+    "terminationBehavior": ""
+  }
+}

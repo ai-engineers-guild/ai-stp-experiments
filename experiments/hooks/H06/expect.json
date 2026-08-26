@@ -1,0 +1,13 @@
+{
+  "id": "H06",
+  "event": "PreInvocation",
+  "matcher": null,
+  "marker": "AI_STP_H06_PREINVOCATION",
+  "output": {
+    "injectSteps": [
+      {
+        "userMessage": "Reply with AI_STP_H06_PRE"
+      }
+    ]
+  }
+}

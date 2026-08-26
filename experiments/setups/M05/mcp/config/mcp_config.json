@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "M05-mcp-a": {
+      "command": "python",
+      "args": [
+        "-u",
+        "-c",
+        "import json,sys; tools=[{'name':'probe','description':'probe','inputSchema':{'type':'object','properties':{}}}];\nfor line in sys.stdin:\n r=json.loads(line); m=r.get('method'); out={'jsonrpc':'2.0','id':r.get('id')}; out.update({'result':{'protocolVersion':'2024-11-05','capabilities':{'tools':{}},'serverInfo':{'name':'M05-mcp-a','version':'1.0'}}} if m=='initialize' else {'result':{'tools':tools}} if m=='tools/list' else {'result':{'content':[{'type':'text','text':'AI_STP_M05_MCP_A'}]}} if m=='tools/call' else {'result':{}}); print(json.dumps(out),flush=True)"
+      ]
+    },
+    "M05-mcp-b": {
+      "command": "python",
+      "args": [
+        "-u",
+        "-c",
+        "import json,sys; tools=[{'name':'probe','description':'probe','inputSchema':{'type':'object','properties':{}}}];\nfor line in sys.stdin:\n r=json.loads(line); m=r.get('method'); out={'jsonrpc':'2.0','id':r.get('id')}; out.update({'result':{'protocolVersion':'2024-11-05','capabilities':{'tools':{}},'serverInfo':{'name':'M05-mcp-b','version':'1.0'}}} if m=='initialize' else {'result':{'tools':tools}} if m=='tools/list' else {'result':{'content':[{'type':'text','text':'AI_STP_M05_MCP_B'}]}} if m=='tools/call' else {'result':{}}); print(json.dumps(out),flush=True)"
+      ]
+    }
+  }
+}

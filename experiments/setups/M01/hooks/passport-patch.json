@@ -1,0 +1,41 @@
+{
+  "name": "m01-hooks",
+  "description": "Deterministic hook fixture m01-hooks.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "hook",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/hooks.json",
+    "config/hooks/h01.py",
+    "config/hooks/h02.py"
+  ],
+  "native_ids": [
+    "PreToolUse"
+  ],
+  "entry_points": [
+    "hooks.PreToolUse"
+  ],
+  "runtime_requirements": [
+    "python>=3.11"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

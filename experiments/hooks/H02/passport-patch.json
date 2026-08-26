@@ -1,0 +1,40 @@
+{
+  "name": "experiment-h02-pretooluse",
+  "description": "Deterministic hook fixture experiment-h02-pretooluse.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "hook",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/hooks.json",
+    "config/hooks/h02.py"
+  ],
+  "native_ids": [
+    "PreToolUse:list_dir"
+  ],
+  "entry_points": [
+    "hooks.PreToolUse"
+  ],
+  "runtime_requirements": [
+    "python>=3.11"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

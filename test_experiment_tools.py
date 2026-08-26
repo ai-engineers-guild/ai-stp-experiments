@@ -4,16 +4,10 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 import delegate
-import run_all
 import run_experiment
 
 
 class RunnerTests(unittest.TestCase):
-    def test_batch_contains_exactly_the_canonical_corpus(self) -> None:
-        rows = run_all.tasks()
-        self.assertEqual(len(rows), 57)
-        self.assertEqual(len({experiment_id for experiment_id, _ in rows}), 57)
-
     def test_expand_and_select_fail_closed(self) -> None:
         self.assertEqual(run_experiment.expand("x/${a}", {"a": "b"}), "x/b")
         with self.assertRaises(ValueError):

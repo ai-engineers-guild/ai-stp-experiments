@@ -1,0 +1,13 @@
+{
+  "id": "H05",
+  "event": "PreInvocation",
+  "matcher": null,
+  "marker": "AI_STP_H05_PREINVOCATION",
+  "output": {
+    "injectSteps": [
+      {
+        "ephemeralMessage": "AI_STP_H05_PRE"
+      }
+    ]
+  }
+}

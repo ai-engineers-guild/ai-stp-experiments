@@ -1,0 +1,26 @@
+{
+  "id": "M04",
+  "minimum_per_kind": 2,
+  "members": {
+    "skills": [
+      "M04-skill-a",
+      "M04-skill-b"
+    ],
+    "hooks": [
+      "H07",
+      "H08"
+    ],
+    "mcps": [
+      "M04-mcp-a",
+      "M04-mcp-b"
+    ],
+    "settings": [
+      "S04",
+      "S05"
+    ],
+    "subagents": [
+      "M04-agent-a",
+      "M04-agent-b"
+    ]
+  }
+}
