@@ -1,0 +1,24 @@
+schema_version: 2
+id: E60
+title: rollback через ai-stp
+prompt: List skills after rollback. Do not edit files.
+expect: Либо вернулся бэкап, либо blocked — записать команду и ошибку.
+expected_verdict: blocked
+diagnostic:
+  reason: rollback requires a BackupRef produced in the same installation run
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

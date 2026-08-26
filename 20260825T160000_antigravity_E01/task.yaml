@@ -1,0 +1,27 @@
+schema_version: 2
+id: E01
+title: Голый харнесс через ai-stp
+prompt: Do not edit files. List skills, MCP servers, and hooks you have. If a category
+  is empty, say empty.
+expect: После голого ящика Agy не называет пользовательские скиллы/MCP/хуки. Если
+  ai-stp не умеет очистить target — verdict=blocked, это дефект Windows-контура, не
+  повод звать npx.
+expected_verdict: blocked
+diagnostic:
+  reason: bare-home transition is covered by each disposable component run
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

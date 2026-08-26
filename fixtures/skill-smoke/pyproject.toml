@@ -1,0 +1,21 @@
+[tool.ai-stp.component]
+name = "experiment-smoke"
+description = "Deterministic marker used only by the ai-stp experiment suite."
+tags = ["quality"]
+harness_id = "antigravity"
+component_type = "skill"
+projection_kind = "native_files"
+entry_points = ["SKILL.md"]
+runtime_requirements = []
+provides_capabilities = []
+requires_authorization = "none"
+requires_credentials = false
+
+[tool.ai-stp.component.license]
+spdx_id = "MIT"
+redistribution_allowed = true
+
+[tool.ai-stp.component.permissions]
+filesystem = []
+network = []
+process = []

@@ -1,0 +1,19 @@
+{
+  "name": "experiment-plugin-local",
+  "description": "Deterministic native plugin used only by the experiment suite.",
+  "tags": ["quality"],
+  "harness_id": "antigravity",
+  "component_type": "plugin",
+  "projection_kind": "plugin",
+  "license": {"spdx_id": "MIT", "redistribution_allowed": true},
+  "managed_paths": ["antigravity-cli/plugins/experiment-plugin/plugin.json", "antigravity-cli/plugins/experiment-plugin/AI_STP_PLUGIN_MARKER.txt", "antigravity-cli/plugins/experiment-plugin/skills/experiment-plugin/SKILL.md"],
+  "native_ids": ["experiment-plugin"],
+  "entry_points": ["plugin.json"],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {"filesystem": [], "network": [], "process": []}
+}

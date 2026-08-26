@@ -1,0 +1,6 @@
+{
+  "name": "experiment-plugin",
+  "version": "1.0.0",
+  "description": "Deterministic native plugin marker for ai-stp experiments",
+  "skills": "./skills/"
+}

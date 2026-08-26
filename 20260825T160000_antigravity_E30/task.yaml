@@ -1,0 +1,24 @@
+schema_version: 2
+id: E30
+title: Голый + скилл jira-daily-pm-radar из ~/.gemini/skills
+prompt: Use jira-daily-pm-radar. Name the first daily step. Do not call Jira.
+expect: Agy пользуется этим скиллом; config/skills пуст кроме него.
+expected_verdict: blocked
+diagnostic:
+  reason: the named private skill fixture is unavailable
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

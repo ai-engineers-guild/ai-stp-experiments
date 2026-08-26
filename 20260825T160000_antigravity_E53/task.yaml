@@ -1,0 +1,25 @@
+schema_version: 2
+id: E53
+title: Сетап из 20 скиллов
+prompt: List every skill you have by name. Then use ponytail in one sentence. Do not
+  edit files.
+expect: 20 имён. ponytail умеет. MCP/хуки отсутствуют, если не входили в сетап.
+expected_verdict: blocked
+diagnostic:
+  reason: the original twenty skills need distinct released component fixtures
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

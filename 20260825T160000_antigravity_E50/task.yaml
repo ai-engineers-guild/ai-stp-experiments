@@ -1,0 +1,24 @@
+schema_version: 2
+id: E50
+title: Голый + command в проекте (глобальных нет)
+prompt: List project commands you have. Do not edit files.
+expect: Command только проектный (.agents). Глобального нет — gap харнесса.
+expected_verdict: blocked
+diagnostic:
+  reason: Antigravity provider does not declare the command component kind
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

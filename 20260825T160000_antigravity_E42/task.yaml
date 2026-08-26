@@ -1,0 +1,25 @@
+schema_version: 2
+id: E42
+title: Голый + один MCP serena
+prompt: Use the serena MCP. list_dir on ${workspace_root}\agy-probe. Do not edit files.
+expect: Agy вызывает serena. Других MCP нет. Скиллов нет.
+expected_verdict: blocked
+diagnostic:
+  reason: the named external MCP needs its own public fixture, network policy, or
+    credentials
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

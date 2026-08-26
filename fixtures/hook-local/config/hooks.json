@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cmd /d /s /c C:\\Users\\User\\a_projects\\experiments\\fixtures\\hook-local\\hook.cmd",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

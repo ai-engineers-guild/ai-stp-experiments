@@ -1,0 +1,24 @@
+schema_version: 2
+id: E58
+title: install apply без провайдера — ожидаемый отказ
+prompt: Do not edit files. List skills. Expect still empty if apply refused.
+expect: Честный отказ CLI, не тихая запись файлов. Это главный Windows-результат.
+expected_verdict: blocked
+diagnostic:
+  reason: missing-provider refusal is an expected negative experiment
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

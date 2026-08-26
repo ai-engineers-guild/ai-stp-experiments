@@ -1,0 +1,26 @@
+schema_version: 2
+id: E13
+title: Голый + один скилл dlt-skill
+prompt: Use dlt-skill. Name one verified source and one destination. Do not run a
+  pipeline.
+expect: На голом ящике Agy умеет воспользоваться только dlt-skill. Если apply без
+  провайдера падает — verdict=blocked.
+expected_verdict: blocked
+diagnostic:
+  reason: the original named skill fixture is unavailable
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

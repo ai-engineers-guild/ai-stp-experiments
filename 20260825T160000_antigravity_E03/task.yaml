@@ -1,0 +1,24 @@
+schema_version: 2
+id: E03
+title: Снять канонический скилл ai-stp
+prompt: Do you still have an ai-stp skill? If yes, name it. Do not edit files.
+expect: Скилла нет. Agy не ссылается на него.
+expected_verdict: blocked
+diagnostic:
+  reason: canonical ai-stp skill removal requires a preceding canonical install
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

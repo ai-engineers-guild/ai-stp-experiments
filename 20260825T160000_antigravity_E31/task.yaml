@@ -1,0 +1,24 @@
+schema_version: 2
+id: E31
+title: Голый + скилл langfuse
+prompt: Use langfuse skill. Say one thing it tells you to do. Do not call APIs.
+expect: Либо умеет, либо слепой (в E00 не называл) — записать как есть.
+expected_verdict: blocked
+diagnostic:
+  reason: the named private skill fixture is unavailable
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

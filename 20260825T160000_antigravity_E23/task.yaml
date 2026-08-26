@@ -1,0 +1,26 @@
+schema_version: 2
+id: E23
+title: Голый + один скилл ponytail-help
+prompt: Use the skill ponytail-help. Say that you loaded it and do one tiny action
+  it prescribes. Do not edit files.
+expect: На голом ящике Agy умеет воспользоваться только ponytail-help. Если apply
+  без провайдера падает — verdict=blocked.
+expected_verdict: blocked
+diagnostic:
+  reason: the original named skill fixture is unavailable
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

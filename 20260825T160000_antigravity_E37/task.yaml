@@ -1,0 +1,26 @@
+schema_version: 2
+id: E37
+title: Голый + один MCP figma
+prompt: Use the figma MCP. List the tools you actually have from it. Call one read-only
+  tool if safe. Do not edit files.
+expect: Agy вызывает figma. Других MCP нет. Скиллов нет.
+expected_verdict: blocked
+diagnostic:
+  reason: the named external MCP needs its own public fixture, network policy, or
+    credentials
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []

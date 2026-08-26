@@ -1,0 +1,24 @@
+schema_version: 2
+id: E55
+title: Сетап только хуки
+prompt: Run dir on the probe folder. Did a hook wrap it? List skills (expect empty).
+expect: Хук есть, скиллов нет.
+expected_verdict: blocked
+diagnostic:
+  reason: Antigravity 1.1.21 headless does not load the documented hook fixture
+  expected_error: AI_STP_NEEDS_CONFIGURATION
+phases:
+  prepare:
+  - id: doctor
+    argv:
+    - ${ai_stp}
+    - doctor
+    - --json
+  - id: discover
+    argv:
+    - ${ai_stp}
+    - component
+    - discover
+    - --json
+  install: []
+  verify: []
