@@ -47,7 +47,7 @@ def main() -> int:
     for name in names:
         variables = dict(base)
         try:
-            _, profile = run_experiment.load_profile({}, variables, name)
+            run_experiment.load_profile({}, variables, name)
             checks = {
                 "ai_stp": available(variables["ai_stp"]),
                 "harness_cli": available(variables["cli"]),

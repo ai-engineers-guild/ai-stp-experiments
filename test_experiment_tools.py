@@ -3,8 +3,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-import run_all
 import delegate
+import run_all
 import run_experiment
 
 

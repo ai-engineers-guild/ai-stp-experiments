@@ -13,7 +13,6 @@ from pathlib import Path
 
 import yaml
 
-
 PROFILES = Path(__file__).with_name("harnesses.yaml")
 LOCAL_PROFILES = PROFILES.with_name("harnesses.local.yaml")
 
@@ -211,7 +210,7 @@ def main() -> int:
             if "fail" in step_verdicts + assertion_verdicts
             else task.get("expected_verdict", "pass")
         )
-    except Exception as exc:
+    except Exception as exc:  # noqa: BLE001 - task failures belong in evidence
         result["failure"] = {"type": type(exc).__name__, "message": str(exc)}
         if phase == "verify" and task.get("observer_failure_verdict") == "blocked":
             result["verdict"] = "blocked"
@@ -225,7 +224,7 @@ def main() -> int:
                     result["phases"]["cleanup"].append(
                         run_step(step, variables, logs, env)
                     )
-            except Exception as exc:
+            except Exception as exc:  # noqa: BLE001 - cleanup failure must be retained
                 result["cleanup_failure"] = {
                     "type": type(exc).__name__,
                     "message": str(exc),
