@@ -13,13 +13,13 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    "config/commands/experiment-c01.md"
+    "commands/experiment-c01.md"
   ],
   "native_ids": [
     "experiment-c01"
   ],
   "entry_points": [
-    "config/commands/experiment-c01.md"
+    "commands/experiment-c01.md"
   ],
   "runtime_requirements": [],
   "provides_capabilities": [],

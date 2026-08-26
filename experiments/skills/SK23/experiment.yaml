@@ -1,0 +1,13 @@
+schema_version: 1
+id: SK23
+component_type: skill
+scenario: relative-links
+fixtures:
+- main
+variants:
+- antigravity
+- pi
+- pi-omp
+observe:
+  expect:
+    marker: AI_STP_SK23

@@ -23,8 +23,13 @@ def materialize(fixture: Path, harness: str, output: Path) -> None:
     if output.exists():
         raise FileExistsError(output)
     common = fixture / "payload" / "common"
-    shutil.copytree(common, output)
     overlay = fixture / "payload" / "harnesses" / harness
+    if not common.is_dir() and not overlay.is_dir():
+        raise ValueError(f"fixture has no {harness} variant")
+    if common.is_dir():
+        shutil.copytree(common, output)
+    else:
+        output.mkdir(parents=True)
     if overlay.is_dir():
         shutil.copytree(overlay, output, dirs_exist_ok=True)
     passport = json.loads((fixture / "passport-patch.json").read_text(encoding="utf-8"))

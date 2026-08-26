@@ -1,0 +1,10 @@
+schema_version: 1
+id: C03
+component_type: command
+scenario: multiline
+fixtures:
+- main
+variants: []
+observe:
+  expect:
+    marker: AI_STP_C03

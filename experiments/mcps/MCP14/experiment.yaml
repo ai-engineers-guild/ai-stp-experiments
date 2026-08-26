@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP14
+component_type: mcp
+scenario: stderr-safe
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP14

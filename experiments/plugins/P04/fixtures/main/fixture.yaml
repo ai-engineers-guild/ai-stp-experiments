@@ -20,3 +20,11 @@ states:
       exists: true
   restored:
     same_as: baseline
+fixture_type: component
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - antigravity-cli/plugins/ai-stp-p04-plugin/MARKER.txt
+    - antigravity-cli/plugins/ai-stp-p04-plugin/plugin.json
+    - antigravity-cli/plugins/ai-stp-p04-plugin/skills/ai-stp-p04-plugin/SKILL.md

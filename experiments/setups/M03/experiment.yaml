@@ -9,8 +9,6 @@ fixtures:
 - M03-skill-b
 - M03-agent-a
 - M03-agent-b
-harnesses:
-- antigravity
 minimum_objects:
   skill: 2
   hook: 2
@@ -34,3 +32,5 @@ observe:
     subagents:
     - M03-agent-a
     - M03-agent-b
+variants:
+- antigravity

@@ -21,3 +21,11 @@ states:
       exists: true
   restored:
     same_as: baseline
+fixture_type: component
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/hooks.json
+    - config/hooks/h05.py
+    - config/hooks/h06.py

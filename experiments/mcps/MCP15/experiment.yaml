@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP15
+component_type: mcp
+scenario: environment-marker
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP15

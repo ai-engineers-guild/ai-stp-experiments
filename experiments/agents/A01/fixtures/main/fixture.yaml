@@ -1,6 +1,12 @@
 schema_version: 1
+fixture_type: component
 objects:
 - experiment-a01
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/agents/experiment-a01.md
 states:
   baseline:
     paths:

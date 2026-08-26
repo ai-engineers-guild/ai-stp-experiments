@@ -1,0 +1,20 @@
+schema_version: 1
+fixture_type: component
+objects:
+- experiment-a04
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/agents/experiment-a04.md
+states:
+  baseline:
+    paths:
+    - path: config/agents/experiment-a04.md
+      exists: false
+  installed:
+    paths:
+    - path: config/agents/experiment-a04.md
+      exists: true
+  restored:
+    same_as: baseline

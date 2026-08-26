@@ -1,0 +1,25 @@
+schema_version: 1
+fixture_type: component
+objects:
+- experiment-mcp07
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/mcp_config.json
+    - config/mcp_servers/experiment-mcp07.py
+states:
+  baseline:
+    paths:
+    - path: config/mcp_config.json
+      exists: false
+    - path: config/mcp_servers/experiment-mcp07.py
+      exists: false
+  installed:
+    paths:
+    - path: config/mcp_config.json
+      exists: true
+    - path: config/mcp_servers/experiment-mcp07.py
+      exists: true
+  restored:
+    same_as: baseline

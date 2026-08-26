@@ -14,8 +14,8 @@ experiments/<category>/<experiment-id>/
     ├── fixture.yaml
     ├── passport-patch.json
     └── payload/
-        ├── common/                 # переносимый исходный payload
-        └── harnesses/<profile>/    # необязательное нативное дополнение/замена
+        ├── common/                 # необязательная общая часть payload
+        └── harnesses/<profile>/    # нативная проекция setup-system
     └── passport-overrides/<profile>.json # необязательный merge override
 ```
 
@@ -24,7 +24,7 @@ experiments/<category>/<experiment-id>/
 каноническому component type `agent`; роль такого компонента может быть
 `subagent`.
 
-`experiment.yaml` владеет целью, поддерживаемыми профилями, порядком фикстур и
+`experiment.yaml` владеет целью, доступными provider-вариантами, порядком фикстур и
 проверкой observer. `fixture.yaml` владеет одним физическим компонентом,
 логическими объектами внутри него и тремя ожидаемыми состояниями:
 
@@ -54,6 +54,8 @@ doctor → baseline snapshot → ai-stp plan/approve/apply → filesystem assert
 ## Критерии приёмки
 
 - валидатор находит ровно девять категорий и хотя бы один experiment в каждой;
+- валидатор требует ровно 25 skill, 16 mcp, 10 hook, по 5 остальных компонентов
+  и 5 setup — всего 81 логический experiment;
 - каждый experiment и fixture имеют manifest;
 - пути и команды не содержат machine-specific абсолютных путей;
 - harness overlay не заменяет общий manifest или паспорт;
@@ -61,3 +63,5 @@ doctor → baseline snapshot → ai-stp plan/approve/apply → filesystem assert
 - observer запускается только после успешной установки;
 - rollback запускается в `finally`, а restored snapshot сравнивается с baseline;
 - одна команда строит матрицу по OS, harness, category, experiment и fixture.
+- матрица не удаляет отсутствующий provider-вариант, а помечает его
+  `expected: unsupported`.

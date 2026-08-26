@@ -41,6 +41,8 @@ class RunnerTests(unittest.TestCase):
             self.assertNotEqual(run_experiment.snapshot(root), baseline)
             path.write_text("before", encoding="utf-8")
             self.assertEqual(run_experiment.snapshot(root), baseline)
+            (root / "agent.db").write_text("runtime", encoding="utf-8")
+            self.assertEqual(run_experiment.snapshot(root, ["agent.db*"]), baseline)
 
     def test_expected_blocker_is_not_a_runner_failure(self) -> None:
         with TemporaryDirectory() as directory:

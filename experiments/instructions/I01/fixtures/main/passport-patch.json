@@ -13,13 +13,13 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    "config/AGENTS.md"
+    "AGENTS.md"
   ],
   "native_ids": [
     "experiment-i01"
   ],
   "entry_points": [
-    "config/AGENTS.md"
+    "AGENTS.md"
   ],
   "runtime_requirements": [],
   "provides_capabilities": [],

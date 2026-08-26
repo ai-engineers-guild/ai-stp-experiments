@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP06
+component_type: mcp
+scenario: boolean-argument
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP06

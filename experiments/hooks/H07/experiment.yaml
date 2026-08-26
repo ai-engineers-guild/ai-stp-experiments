@@ -3,8 +3,6 @@ id: H07
 component_type: hook
 fixtures:
 - main
-harnesses:
-- antigravity
 observe:
   expect:
     id: H07
@@ -13,3 +11,5 @@ observe:
     marker: AI_STP_H07_POSTINVOCATION
     output:
       injectSteps: []
+variants:
+- antigravity

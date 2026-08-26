@@ -1,10 +1,11 @@
 schema_version: 1
 id: A01
 component_type: agent
+scenario: minimal
 fixtures:
 - main
-harnesses:
+variants:
 - antigravity
 observe:
   expect:
-    marker: experiment-a01
+    marker: AI_STP_A01

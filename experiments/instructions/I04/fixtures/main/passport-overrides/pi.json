@@ -1,0 +1,9 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "AGENTS.md"
+  ],
+  "entry_points": [
+    "AGENTS.md"
+  ]
+}

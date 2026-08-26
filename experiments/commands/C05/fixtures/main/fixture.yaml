@@ -1,0 +1,16 @@
+schema_version: 1
+fixture_type: component
+objects:
+- experiment-c05
+variants: {}
+states:
+  baseline:
+    paths:
+    - path: commands/experiment-c05.md
+      exists: false
+  installed:
+    paths:
+    - path: commands/experiment-c05.md
+      exists: true
+  restored:
+    same_as: baseline

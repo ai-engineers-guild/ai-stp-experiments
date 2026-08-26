@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP04
+component_type: mcp
+scenario: string-argument
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP04

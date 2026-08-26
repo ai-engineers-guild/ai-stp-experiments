@@ -1,0 +1,23 @@
+schema_version: 1
+fixture_type: component
+objects:
+- experiment-i02
+variants:
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths: &id001
+    - AGENTS.md
+  pi-omp:
+    payload: payload/harnesses/pi-omp
+    managed_paths: *id001
+states:
+  baseline:
+    paths:
+    - path: AGENTS.md
+      exists: false
+  installed:
+    paths:
+    - path: AGENTS.md
+      exists: true
+  restored:
+    same_as: baseline

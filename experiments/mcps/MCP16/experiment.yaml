@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP16
+component_type: mcp
+scenario: two-servers
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP16

@@ -1,0 +1,35 @@
+{
+  "name": "experiment-sk01",
+  "description": "Deterministic skill fixture experiment-sk01.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "skill",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/skills/experiment-sk01/SKILL.md"
+  ],
+  "native_ids": [
+    "experiment-sk01"
+  ],
+  "entry_points": [
+    "config/skills/experiment-sk01/SKILL.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

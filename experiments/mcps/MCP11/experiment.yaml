@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP11
+component_type: mcp
+scenario: server-instructions
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP11

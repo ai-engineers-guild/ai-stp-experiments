@@ -1,14 +1,16 @@
 schema_version: 1
+fixture_type: component
 objects:
 - experiment-c01
+variants: {}
 states:
   baseline:
     paths:
-    - path: config/commands/experiment-c01.md
+    - path: commands/experiment-c01.md
       exists: false
   installed:
     paths:
-    - path: config/commands/experiment-c01.md
+    - path: commands/experiment-c01.md
       exists: true
   restored:
     same_as: baseline

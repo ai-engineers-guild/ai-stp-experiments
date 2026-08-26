@@ -1,0 +1,12 @@
+schema_version: 1
+id: I03
+component_type: instruction
+scenario: unicode
+fixtures:
+- main
+variants:
+- pi
+- pi-omp
+observe:
+  expect:
+    marker: AI_STP_I03

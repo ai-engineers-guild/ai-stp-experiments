@@ -1,0 +1,11 @@
+schema_version: 1
+id: A02
+component_type: agent
+scenario: reviewer
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_A02

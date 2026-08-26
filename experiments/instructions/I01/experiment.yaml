@@ -1,10 +1,12 @@
 schema_version: 1
 id: I01
 component_type: instruction
+scenario: root
 fixtures:
 - main
-harnesses:
-- antigravity
+variants:
+- pi
+- pi-omp
 observe:
   expect:
-    marker: experiment-i01
+    marker: AI_STP_I01

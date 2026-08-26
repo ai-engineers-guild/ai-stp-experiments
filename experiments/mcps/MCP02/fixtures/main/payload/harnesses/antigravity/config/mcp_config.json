@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "experiment-mcp02": {
+      "command": "python",
+      "args": [
+        "config/mcp_servers/experiment-mcp02.py"
+      ]
+    }
+  }
+}

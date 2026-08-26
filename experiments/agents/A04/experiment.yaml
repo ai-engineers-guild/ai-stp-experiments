@@ -1,0 +1,11 @@
+schema_version: 1
+id: A04
+component_type: agent
+scenario: tool-free
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_A04

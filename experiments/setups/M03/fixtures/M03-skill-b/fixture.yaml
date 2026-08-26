@@ -12,3 +12,9 @@ states:
       exists: true
   restored:
     same_as: baseline
+fixture_type: component
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/skills/M03-skill-b/SKILL.md

@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP02
+component_type: mcp
+scenario: two-tools
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP02

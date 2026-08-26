@@ -6,6 +6,9 @@ antigravity:
   provider: antigravity-setup-system
   delegate: ${experiments}/delegate.py
   delegate_backend: ${skills_root}/antigravity-delegate/scripts/delegate_antigravity.py
+  snapshot_ignore:
+    - .antigravity-setup-system/**
+    - NDDEV-ANTIGRAVITY-CLI-PROVIDER.json
 
 codex:
   cli: codex
@@ -34,6 +37,12 @@ pi:
   delegate: ${experiments}/delegate.py
   delegate_backend: ${skills_root}/pi-delegate/scripts/delegate_pi.py
   runtime: pi
+  snapshot_ignore: &pi_runtime_state
+    - .pi-setup-system/**
+    - NDDEV-PI-PROVIDER.json
+    - agent.db*
+    - models.db*
+    - logs/**
 
 pi-omp:
   cli: omp
@@ -44,6 +53,7 @@ pi-omp:
   delegate: ${experiments}/delegate.py
   delegate_backend: ${skills_root}/pi-delegate/scripts/delegate_pi.py
   runtime: omp
+  snapshot_ignore: *pi_runtime_state
 
 opencode:
   cli: opencode

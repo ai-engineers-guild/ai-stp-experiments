@@ -3,10 +3,10 @@ id: S05
 component_type: setting
 fixtures:
 - main
-harnesses:
-- antigravity
 observe:
   expect:
     id: S05
     key: verbosity
     value: low
+variants:
+- antigravity

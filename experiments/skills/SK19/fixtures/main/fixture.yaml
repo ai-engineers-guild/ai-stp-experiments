@@ -1,0 +1,28 @@
+schema_version: 1
+fixture_type: component
+objects:
+- experiment-sk19
+variants:
+  antigravity:
+    payload: payload/harnesses/antigravity
+    managed_paths:
+    - config/skills/experiment-sk19/SKILL.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - skills/experiment-sk19/SKILL.md
+  pi-omp:
+    payload: payload/harnesses/pi-omp
+    managed_paths:
+    - skills/experiment-sk19/SKILL.md
+states:
+  baseline:
+    paths:
+    - path: config/skills/experiment-sk19/SKILL.md
+      exists: false
+  installed:
+    paths:
+    - path: config/skills/experiment-sk19/SKILL.md
+      exists: true
+  restored:
+    same_as: baseline

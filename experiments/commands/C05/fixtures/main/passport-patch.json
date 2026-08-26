@@ -1,0 +1,35 @@
+{
+  "name": "experiment-c05",
+  "description": "Deterministic command fixture experiment-c05.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "command",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "commands/experiment-c05.md"
+  ],
+  "native_ids": [
+    "experiment-c05"
+  ],
+  "entry_points": [
+    "commands/experiment-c05.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

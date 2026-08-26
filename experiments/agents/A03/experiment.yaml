@@ -1,0 +1,11 @@
+schema_version: 1
+id: A03
+component_type: agent
+scenario: planner
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_A03

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import hashlib
 import json
 import os
@@ -18,18 +19,19 @@ PROFILES = Path(__file__).with_name("harnesses.yaml")
 LOCAL_PROFILES = PROFILES.with_name("harnesses.local.yaml")
 
 
-def snapshot(root: Path) -> dict[str, str]:
+def snapshot(root: Path, ignored: list[str] | None = None) -> dict[str, str]:
     """Hash a target tree without following links or storing its contents."""
     if not root.exists():
         return {}
     result = {}
     for path in sorted(root.rglob("*")):
+        relative = path.relative_to(root).as_posix()
+        if any(fnmatch.fnmatch(relative, pattern) for pattern in ignored or []):
+            continue
         if path.is_symlink():
-            result[path.relative_to(root).as_posix()] = f"link:{os.readlink(path)}"
+            result[relative] = f"link:{os.readlink(path)}"
         elif path.is_file():
-            result[path.relative_to(root).as_posix()] = hashlib.sha256(
-                path.read_bytes()
-            ).hexdigest()
+            result[relative] = hashlib.sha256(path.read_bytes()).hexdigest()
     return result
 
 
@@ -216,7 +218,7 @@ def main() -> int:
         "phases": {},
         "assertions": [],
         "verdict": "inconclusive",
-        "baseline_snapshot": snapshot(target),
+        "baseline_snapshot": snapshot(target, profile.get("snapshot_ignore")),
     }
     phase = "prepare"
     try:
@@ -258,7 +260,7 @@ def main() -> int:
                     "message": str(exc),
                 }
                 result["verdict"] = "fail"
-        result["restored_snapshot"] = snapshot(target)
+        result["restored_snapshot"] = snapshot(target, profile.get("snapshot_ignore"))
         result["restored"] = result["restored_snapshot"] == result["baseline_snapshot"]
         if cleanup and not result["restored"]:
             result["verdict"] = "fail"

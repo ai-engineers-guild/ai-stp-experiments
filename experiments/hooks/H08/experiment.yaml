@@ -3,8 +3,6 @@ id: H08
 component_type: hook
 fixtures:
 - main
-harnesses:
-- antigravity
 observe:
   expect:
     id: H08
@@ -14,3 +12,5 @@ observe:
     output:
       injectSteps: []
       terminationBehavior: ''
+variants:
+- antigravity

@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP07
+component_type: mcp
+scenario: required-argument
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP07

@@ -1,0 +1,12 @@
+schema_version: 1
+id: I04
+component_type: instruction
+scenario: long
+fixtures:
+- main
+variants:
+- pi
+- pi-omp
+observe:
+  expect:
+    marker: AI_STP_I04

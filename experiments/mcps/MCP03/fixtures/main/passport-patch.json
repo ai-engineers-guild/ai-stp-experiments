@@ -1,0 +1,41 @@
+{
+  "name": "experiment-mcp03",
+  "description": "Deterministic mcp fixture experiment-mcp03.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "mcp",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/mcp_config.json",
+    "config/mcp_servers/experiment-mcp03.py"
+  ],
+  "native_ids": [
+    "experiment-mcp03"
+  ],
+  "entry_points": [
+    "config/mcp_config.json",
+    "config/mcp_servers/experiment-mcp03.py"
+  ],
+  "runtime_requirements": [
+    "python>=3.11"
+  ],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": [
+      "python"
+    ]
+  }
+}

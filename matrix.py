@@ -24,6 +24,17 @@ CATEGORIES = {
     "setups": "setup",
 }
 OPERATING_SYSTEMS = ("windows", "macos", "linux")
+EXPECTED_COUNTS = {
+    "instructions": 5,
+    "skills": 25,
+    "mcps": 16,
+    "hooks": 10,
+    "commands": 5,
+    "agents": 5,
+    "plugins": 5,
+    "settings": 5,
+    "setups": 5,
+}
 
 
 def load(path: Path) -> dict:
@@ -56,7 +67,7 @@ def cases(
                         "component_type": document.get("component_type"),
                         "path": directory.relative_to(ROOT).as_posix(),
                         "fixtures": document.get("fixtures", []),
-                        "harnesses": document.get("harnesses", []),
+                        "variants": document.get("variants", []),
                     }
                 )
     return rows
@@ -83,6 +94,12 @@ def validate() -> list[dict]:
         raise ValueError(
             f"category mismatch: missing={sorted(set(CATEGORIES) - present)}"
         )
+    counts = {
+        category: sum(row["category"] == category for row in rows)
+        for category in CATEGORIES
+    }
+    if counts != EXPECTED_COUNTS:
+        raise ValueError(f"experiment count mismatch: {counts}")
     profiles = set(load(ROOT / "harnesses.yaml"))
     for row in rows:
         root = ROOT / row["path"]
@@ -93,7 +110,7 @@ def validate() -> list[dict]:
             raise ValueError(f"{row['id']}: component type/category mismatch")
         if not row["fixtures"] or len(row["fixtures"]) != len(set(row["fixtures"])):
             raise ValueError(f"{row['id']}: fixtures must be a unique non-empty list")
-        if not set(row["harnesses"]) <= profiles:
+        if not set(row["variants"]) <= profiles:
             raise ValueError(f"{row['id']}: unknown harness profile")
         object_counts: dict[str, int] = {}
         for fixture_id in row["fixtures"]:
@@ -113,8 +130,15 @@ def validate() -> list[dict]:
                 raise ValueError(
                     f"{row['id']}/{fixture_id}: restored must equal baseline"
                 )
-            if not (fixture / "payload" / "common").is_dir():
-                raise ValueError(f"{row['id']}/{fixture_id}: common payload missing")
+            variants = state.get("variants", {})
+            if set(variants) != set(row["variants"]):
+                raise ValueError(f"{row['id']}/{fixture_id}: variant mismatch")
+            for profile, variant in variants.items():
+                payload = fixture / variant.get("payload", "")
+                if not payload.is_dir():
+                    raise ValueError(
+                        f"{row['id']}/{fixture_id}: {profile} payload missing"
+                    )
             component_type = patch.get("component_type")
             object_counts[component_type] = object_counts.get(component_type, 0) + len(
                 state.get("objects", [])
@@ -154,9 +178,14 @@ def main() -> int:
         platform.system().lower().replace("darwin", "macos")
     ]
     matrix = [
-        {**row, "harness_profile": harness, "os": system}
+        {
+            **row,
+            "harness_profile": harness,
+            "os": system,
+            "variant_available": harness in row["variants"],
+            "expected": "runnable" if harness in row["variants"] else "unsupported",
+        }
         for row, harness, system in product(selected, harnesses, systems)
-        if harness in row["harnesses"]
     ]
     if args.command == "generate":
         if not matrix:
@@ -170,7 +199,7 @@ def main() -> int:
         )
         print(args.output)
     else:
-        print(f"validated: {len(rows)} experiments in 9 categories")
+        print("validated: 81 logical experiments in 9 categories")
     return 0
 
 

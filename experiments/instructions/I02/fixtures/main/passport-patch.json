@@ -1,0 +1,35 @@
+{
+  "name": "experiment-i02",
+  "description": "Deterministic instruction fixture experiment-i02.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "instruction",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "AGENTS.md"
+  ],
+  "native_ids": [
+    "experiment-i02"
+  ],
+  "entry_points": [
+    "AGENTS.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

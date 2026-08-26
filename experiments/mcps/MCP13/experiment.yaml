@@ -1,0 +1,11 @@
+schema_version: 1
+id: MCP13
+component_type: mcp
+scenario: long-result
+fixtures:
+- main
+variants:
+- antigravity
+observe:
+  expect:
+    marker: AI_STP_MCP13

@@ -1,0 +1,13 @@
+schema_version: 1
+id: SK01
+component_type: skill
+scenario: minimal
+fixtures:
+- main
+variants:
+- antigravity
+- pi
+- pi-omp
+observe:
+  expect:
+    marker: AI_STP_SK01

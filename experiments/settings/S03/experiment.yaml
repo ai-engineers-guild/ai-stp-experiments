@@ -3,10 +3,10 @@ id: S03
 component_type: setting
 fixtures:
 - main
-harnesses:
-- antigravity
 observe:
   expect:
     id: S03
     key: showFeedbackSurvey
     value: false
+variants:
+- antigravity
