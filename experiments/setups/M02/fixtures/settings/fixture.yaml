@@ -1,0 +1,15 @@
+schema_version: 1
+objects:
+- S02
+- S03
+states:
+  baseline:
+    paths:
+    - path: antigravity-cli/settings.json
+      exists: false
+  installed:
+    paths:
+    - path: antigravity-cli/settings.json
+      exists: true
+  restored:
+    same_as: baseline

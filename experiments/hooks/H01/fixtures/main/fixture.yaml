@@ -1,0 +1,18 @@
+schema_version: 1
+objects:
+- PreToolUse:run_command
+states:
+  baseline:
+    paths:
+    - path: config/hooks.json
+      exists: false
+    - path: config/hooks/h01.py
+      exists: false
+  installed:
+    paths:
+    - path: config/hooks.json
+      exists: true
+    - path: config/hooks/h01.py
+      exists: true
+  restored:
+    same_as: baseline

@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- altScreenMode
+states:
+  baseline:
+    paths:
+    - path: antigravity-cli/settings.json
+      exists: false
+  installed:
+    paths:
+    - path: antigravity-cli/settings.json
+      exists: true
+  restored:
+    same_as: baseline

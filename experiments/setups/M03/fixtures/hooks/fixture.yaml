@@ -1,0 +1,23 @@
+schema_version: 1
+objects:
+- H05
+- H06
+states:
+  baseline:
+    paths:
+    - path: config/hooks.json
+      exists: false
+    - path: config/hooks/h05.py
+      exists: false
+    - path: config/hooks/h06.py
+      exists: false
+  installed:
+    paths:
+    - path: config/hooks.json
+      exists: true
+    - path: config/hooks/h05.py
+      exists: true
+    - path: config/hooks/h06.py
+      exists: true
+  restored:
+    same_as: baseline

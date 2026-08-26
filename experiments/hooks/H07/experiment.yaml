@@ -1,0 +1,15 @@
+schema_version: 1
+id: H07
+component_type: hook
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: H07
+    event: PostInvocation
+    matcher: null
+    marker: AI_STP_H07_POSTINVOCATION
+    output:
+      injectSteps: []

@@ -1,0 +1,36 @@
+schema_version: 1
+id: M04
+component_type: setup
+fixtures:
+- hooks
+- mcp
+- settings
+- M04-skill-a
+- M04-skill-b
+- M04-agent-a
+- M04-agent-b
+harnesses:
+- antigravity
+minimum_objects:
+  skill: 2
+  hook: 2
+  mcp: 2
+  setting: 2
+  agent: 2
+observe:
+  expect:
+    skills:
+    - M04-skill-a
+    - M04-skill-b
+    hooks:
+    - H07
+    - H08
+    mcps:
+    - M04-mcp-a
+    - M04-mcp-b
+    settings:
+    - S04
+    - S05
+    subagents:
+    - M04-agent-a
+    - M04-agent-b

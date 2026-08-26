@@ -1,7 +1,0 @@
-{
-  "id": "H03",
-  "event": "PostToolUse",
-  "matcher": "run_command",
-  "marker": "AI_STP_H03_POSTTOOLUSE",
-  "output": {}
-}

@@ -1,0 +1,14 @@
+schema_version: 1
+id: H03
+component_type: hook
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: H03
+    event: PostToolUse
+    matcher: run_command
+    marker: AI_STP_H03_POSTTOOLUSE
+    output: {}

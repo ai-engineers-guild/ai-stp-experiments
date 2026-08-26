@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- M05-agent-b
+states:
+  baseline:
+    paths:
+    - path: config/agents/M05-agent-b.md
+      exists: false
+  installed:
+    paths:
+    - path: config/agents/M05-agent-b.md
+      exists: true
+  restored:
+    same_as: baseline

@@ -1,0 +1,12 @@
+schema_version: 1
+id: S04
+component_type: setting
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: S04
+    key: altScreenMode
+    value: never

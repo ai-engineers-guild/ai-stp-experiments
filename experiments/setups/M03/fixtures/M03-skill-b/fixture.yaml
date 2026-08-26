@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- M03-skill-b
+states:
+  baseline:
+    paths:
+    - path: config/skills/M03-skill-b/SKILL.md
+      exists: false
+  installed:
+    paths:
+    - path: config/skills/M03-skill-b/SKILL.md
+      exists: true
+  restored:
+    same_as: baseline

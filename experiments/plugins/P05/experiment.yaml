@@ -1,0 +1,12 @@
+schema_version: 1
+id: P05
+component_type: plugin
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: P05
+    plugin: ai-stp-p05-plugin
+    marker: AI_STP_P05_PLUGIN

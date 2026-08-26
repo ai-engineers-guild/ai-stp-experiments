@@ -1,0 +1,36 @@
+schema_version: 1
+id: M03
+component_type: setup
+fixtures:
+- hooks
+- mcp
+- settings
+- M03-skill-a
+- M03-skill-b
+- M03-agent-a
+- M03-agent-b
+harnesses:
+- antigravity
+minimum_objects:
+  skill: 2
+  hook: 2
+  mcp: 2
+  setting: 2
+  agent: 2
+observe:
+  expect:
+    skills:
+    - M03-skill-a
+    - M03-skill-b
+    hooks:
+    - H05
+    - H06
+    mcps:
+    - M03-mcp-a
+    - M03-mcp-b
+    settings:
+    - S03
+    - S04
+    subagents:
+    - M03-agent-a
+    - M03-agent-b

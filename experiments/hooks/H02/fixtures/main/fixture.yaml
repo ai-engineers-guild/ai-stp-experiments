@@ -1,0 +1,18 @@
+schema_version: 1
+objects:
+- PreToolUse:list_dir
+states:
+  baseline:
+    paths:
+    - path: config/hooks.json
+      exists: false
+    - path: config/hooks/h02.py
+      exists: false
+  installed:
+    paths:
+    - path: config/hooks.json
+      exists: true
+    - path: config/hooks/h02.py
+      exists: true
+  restored:
+    same_as: baseline

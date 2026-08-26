@@ -1,0 +1,22 @@
+schema_version: 1
+objects:
+- ai-stp-p01-plugin
+states:
+  baseline:
+    paths:
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/MARKER.txt
+      exists: false
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/plugin.json
+      exists: false
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md
+      exists: false
+  installed:
+    paths:
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/MARKER.txt
+      exists: true
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/plugin.json
+      exists: true
+    - path: antigravity-cli/plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md
+      exists: true
+  restored:
+    same_as: baseline

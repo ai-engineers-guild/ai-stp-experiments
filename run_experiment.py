@@ -8,6 +8,7 @@ import os
 import shutil
 import subprocess
 import sys
+import hashlib
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -15,6 +16,21 @@ import yaml
 
 PROFILES = Path(__file__).with_name("harnesses.yaml")
 LOCAL_PROFILES = PROFILES.with_name("harnesses.local.yaml")
+
+
+def snapshot(root: Path) -> dict[str, str]:
+    """Hash a target tree without following links or storing its contents."""
+    if not root.exists():
+        return {}
+    result = {}
+    for path in sorted(root.rglob("*")):
+        if path.is_symlink():
+            result[path.relative_to(root).as_posix()] = f"link:{os.readlink(path)}"
+        elif path.is_file():
+            result[path.relative_to(root).as_posix()] = hashlib.sha256(
+                path.read_bytes()
+            ).hexdigest()
+    return result
 
 
 def expand(value: str, variables: dict[str, str]) -> str:
@@ -141,12 +157,17 @@ def main() -> int:
     parser.add_argument("task", type=Path)
     parser.add_argument("--run-root", type=Path, required=True)
     parser.add_argument("--harness-profile")
+    parser.add_argument("--live-target", action="store_true")
+    parser.add_argument("--confirm-target")
     args = parser.parse_args()
     task = yaml.safe_load(args.task.read_text(encoding="utf-8"))
     if task.get("schema_version") != 2:
         raise ValueError("task schema_version must be 2")
     run_root = args.run_root.resolve()
-    project, user_home, logs = (run_root / name for name in ("project", "home", "logs"))
+    project, isolated_home, logs = (
+        run_root / name for name in ("project", "home", "logs")
+    )
+    user_home = Path.home() if args.live_target else isolated_home
     variables = {
         "project": str(project),
         "user_home": str(user_home),
@@ -161,12 +182,18 @@ def main() -> int:
     }
     profile_name, profile = load_profile(task, variables, args.harness_profile)
     target = Path(variables["target"])
+    if args.live_target and str(target.resolve()) != str(
+        Path(args.confirm_target or "").resolve()
+    ):
+        raise ValueError(
+            "live target requires --confirm-target with the exact resolved target"
+        )
     for path in (project, target, logs):
         path.mkdir(parents=True, exist_ok=True)
     variables["target"] = str(target)
     env = os.environ.copy()
     env["AI_STP_FORCE_FILE_CREDENTIAL_STORE"] = "1"
-    if profile.get("isolate_home", True):
+    if profile.get("isolate_home", True) and not args.live_target:
         env.update({"HOME": str(user_home), "USERPROFILE": str(user_home)})
     for name, value in (profile.get("environment") or {}).items():
         env[str(name)] = expand(str(value), variables)
@@ -189,6 +216,7 @@ def main() -> int:
         "phases": {},
         "assertions": [],
         "verdict": "inconclusive",
+        "baseline_snapshot": snapshot(target),
     }
     phase = "prepare"
     try:
@@ -230,6 +258,10 @@ def main() -> int:
                     "message": str(exc),
                 }
                 result["verdict"] = "fail"
+        result["restored_snapshot"] = snapshot(target)
+        result["restored"] = result["restored_snapshot"] == result["baseline_snapshot"]
+        if cleanup and not result["restored"]:
+            result["verdict"] = "fail"
     (run_root / "results.yaml").write_text(
         yaml.safe_dump(result, allow_unicode=True, sort_keys=False), encoding="utf-8"
     )

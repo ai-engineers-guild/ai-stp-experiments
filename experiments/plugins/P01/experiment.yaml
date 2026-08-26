@@ -1,0 +1,12 @@
+schema_version: 1
+id: P01
+component_type: plugin
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: P01
+    plugin: ai-stp-p01-plugin
+    marker: AI_STP_P01_PLUGIN

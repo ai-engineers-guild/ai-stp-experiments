@@ -1,0 +1,12 @@
+schema_version: 1
+id: S02
+component_type: setting
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: S02
+    key: showTips
+    value: false

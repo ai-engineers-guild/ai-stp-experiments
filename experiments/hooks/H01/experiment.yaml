@@ -1,0 +1,16 @@
+schema_version: 1
+id: H01
+component_type: hook
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: H01
+    event: PreToolUse
+    matcher: run_command
+    marker: AI_STP_H01_PRETOOLUSE
+    output:
+      decision: deny
+      reason: AI_STP_H01_DENY

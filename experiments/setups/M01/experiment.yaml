@@ -1,0 +1,36 @@
+schema_version: 1
+id: M01
+component_type: setup
+fixtures:
+- hooks
+- mcp
+- settings
+- M01-skill-a
+- M01-skill-b
+- M01-agent-a
+- M01-agent-b
+harnesses:
+- antigravity
+minimum_objects:
+  skill: 2
+  hook: 2
+  mcp: 2
+  setting: 2
+  agent: 2
+observe:
+  expect:
+    skills:
+    - M01-skill-a
+    - M01-skill-b
+    hooks:
+    - H01
+    - H02
+    mcps:
+    - M01-mcp-a
+    - M01-mcp-b
+    settings:
+    - S01
+    - S02
+    subagents:
+    - M01-agent-a
+    - M01-agent-b

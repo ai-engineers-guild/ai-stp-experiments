@@ -1,0 +1,10 @@
+schema_version: 1
+id: A01
+component_type: agent
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    marker: experiment-a01

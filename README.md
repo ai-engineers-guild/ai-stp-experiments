@@ -1,48 +1,33 @@
 # ai-stp experiments
 
-Private cross-platform fixture corpus for testing ai-stp setup providers and
-coding-agent harnesses on Windows, macOS, and Linux.
-
-## Fixture layout
+Private cross-platform corpus for testing `ai-stp CLI × provider × OS × harness × component`.
 
 ```text
 experiments/
-├── hooks/H01..H10
-├── settings/S01..S05
-├── plugins/P01..P05
-└── setups/M01..M05
+├── instructions/  ├── skills/    ├── mcps/
+├── hooks/         ├── commands/  ├── agents/
+├── plugins/       ├── settings/  └── setups/
 ```
 
-Every case owns its payload, passport patch and machine-readable expectation or
-manifest. There are no timestamp-based source directories. Timestamps belong
-only to ignored run output.
-
-Coverage:
-
-- 10 hooks: two cases for each `PreToolUse`, `PostToolUse`, `PreInvocation`,
-  `PostInvocation`, and `Stop` event;
-- 5 settings: one explicit setting per case;
-- 5 plugins: unique plugin and nested skill per case;
-- 5 full setups: at least two skills, hooks, MCP servers, settings and
-  subagents in every setup.
-
-## Validate and select
+Every category contains experiments; every experiment contains `experiment.yaml`
+and independent `fixtures/<id>` directories. Each fixture has `fixture.yaml`, a
+base passport and `payload/common`. Harness-native files are optional overlays in
+`payload/harnesses/<profile>`; passport differences go in
+`passport-overrides/<profile>.json`. See [the fixture contract](specs/fixture-contract.md).
 
 ```bash
 python -m pip install .
 python matrix.py validate
-python matrix.py generate --harness antigravity
-python matrix.py generate --kind hooks --id H01 --id H02 --harness codex
+python matrix.py generate --category hooks --id H01 --harness antigravity --os windows
+python materialize.py experiments/hooks/H01/fixtures/main --harness antigravity --output _generated/H01
+python doctor.py --profile antigravity
+python run_experiment.py path/to/task.yaml --run-root runs/H01
 ```
 
-Generated selections are written to `_generated/matrix.yaml`. Local execution
-evidence belongs under `runs/` or `results/`; all three locations are ignored.
+`run_experiment.py` uses an isolated HOME by default, records target snapshots,
+runs cleanup/rollback in `finally`, and fails if the restored target differs from
+the baseline. A real target requires both `--live-target` and the exact resolved
+`--confirm-target`; target writes still belong only to ai-stp and its provider.
 
-Machine-specific CLI, delegate and provider paths are placed in the ignored
-`harnesses.local.yaml`, using `harnesses.local.example.yaml` as the template.
-Use `python doctor.py --profile <name>` before a live ai-stp run.
-
-The repository does not install CLIs, authenticate accounts, or publish run
-evidence. A green fixture validation proves corpus structure and portability;
-live installation/observer/rollback evidence must be produced on the target OS
-with its configured provider and delegate.
+Machine-specific executable, delegate and provider paths belong in ignored
+`harnesses.local.yaml`. Generated matrices, runs, results and logs are ignored.

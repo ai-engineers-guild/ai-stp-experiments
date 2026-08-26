@@ -1,9 +1,0 @@
-{
-  "id": "H09",
-  "event": "Stop",
-  "matcher": null,
-  "marker": "AI_STP_H09_STOP",
-  "output": {
-    "decision": "stop"
-  }
-}

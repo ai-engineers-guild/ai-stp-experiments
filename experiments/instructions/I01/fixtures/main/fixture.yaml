@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- experiment-i01
+states:
+  baseline:
+    paths:
+    - path: config/AGENTS.md
+      exists: false
+  installed:
+    paths:
+    - path: config/AGENTS.md
+      exists: true
+  restored:
+    same_as: baseline

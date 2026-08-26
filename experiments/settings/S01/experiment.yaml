@@ -1,0 +1,12 @@
+schema_version: 1
+id: S01
+component_type: setting
+fixtures:
+- main
+harnesses:
+- antigravity
+observe:
+  expect:
+    id: S01
+    key: enableTelemetry
+    value: false

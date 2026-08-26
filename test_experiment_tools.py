@@ -31,6 +31,17 @@ class RunnerTests(unittest.TestCase):
                 "pass",
             )
 
+    def test_snapshot_detects_and_proves_restoration(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            path = root / "state.txt"
+            path.write_text("before", encoding="utf-8")
+            baseline = run_experiment.snapshot(root)
+            path.write_text("after", encoding="utf-8")
+            self.assertNotEqual(run_experiment.snapshot(root), baseline)
+            path.write_text("before", encoding="utf-8")
+            self.assertEqual(run_experiment.snapshot(root), baseline)
+
     def test_expected_blocker_is_not_a_runner_failure(self) -> None:
         with TemporaryDirectory() as directory:
             root = Path(directory)

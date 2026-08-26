@@ -1,0 +1,15 @@
+schema_version: 1
+objects:
+- M03-mcp-a
+- M03-mcp-b
+states:
+  baseline:
+    paths:
+    - path: config/mcp_config.json
+      exists: false
+  installed:
+    paths:
+    - path: config/mcp_config.json
+      exists: true
+  restored:
+    same_as: baseline

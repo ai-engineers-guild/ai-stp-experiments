@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- experiment-k01
+states:
+  baseline:
+    paths:
+    - path: config/skills/experiment-k01/SKILL.md
+      exists: false
+  installed:
+    paths:
+    - path: config/skills/experiment-k01/SKILL.md
+      exists: true
+  restored:
+    same_as: baseline

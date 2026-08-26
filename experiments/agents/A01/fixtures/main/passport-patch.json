@@ -1,0 +1,35 @@
+{
+  "name": "experiment-a01",
+  "description": "Deterministic agent fixture experiment-a01.",
+  "tags": [
+    "experiment",
+    "component-matrix"
+  ],
+  "harness_id": "antigravity",
+  "component_type": "agent",
+  "projection_kind": "native_files",
+  "license": {
+    "spdx_id": "MIT",
+    "redistribution_allowed": true
+  },
+  "managed_paths": [
+    "config/agents/experiment-a01.md"
+  ],
+  "native_ids": [
+    "experiment-a01"
+  ],
+  "entry_points": [
+    "config/agents/experiment-a01.md"
+  ],
+  "runtime_requirements": [],
+  "provides_capabilities": [],
+  "requires_capabilities": [],
+  "requires_components": [],
+  "requires_authorization": "none",
+  "requires_credentials": false,
+  "permissions": {
+    "filesystem": [],
+    "network": [],
+    "process": []
+  }
+}

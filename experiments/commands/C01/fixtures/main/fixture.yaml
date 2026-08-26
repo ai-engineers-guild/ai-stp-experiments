@@ -1,0 +1,14 @@
+schema_version: 1
+objects:
+- experiment-c01
+states:
+  baseline:
+    paths:
+    - path: config/commands/experiment-c01.md
+      exists: false
+  installed:
+    paths:
+    - path: config/commands/experiment-c01.md
+      exists: true
+  restored:
+    same_as: baseline
