@@ -4,8 +4,8 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-import matrix
 import materialize
+import matrix
 
 
 class MatrixTests(unittest.TestCase):

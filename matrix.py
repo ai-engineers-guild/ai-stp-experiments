@@ -29,7 +29,7 @@ OPERATING_SYSTEMS = ("windows", "macos", "linux")
 def load(path: Path) -> dict:
     value = yaml.safe_load(path.read_text(encoding="utf-8"))
     if not isinstance(value, dict):
-        raise ValueError(f"{path}: expected mapping")
+        raise TypeError(f"{path}: expected mapping")
     return value
 
 
