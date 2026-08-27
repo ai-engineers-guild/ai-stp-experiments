@@ -70,6 +70,8 @@ def materialize(fixture: Path, harness: str, output: Path) -> None:
             native_source.rename(authoring_source)
             directory = native_source.parent
             while directory != output:
+                if any(directory.iterdir()):
+                    break
                 directory.rmdir()
                 directory = directory.parent
     passport = base_passport

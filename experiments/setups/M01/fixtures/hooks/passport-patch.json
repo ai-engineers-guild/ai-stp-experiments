@@ -13,9 +13,7 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    "config/hooks.json",
-    "config/hooks/h01.py",
-    "config/hooks/h02.py"
+    "config/hooks.json"
   ],
   "native_ids": [
     "PreToolUse"

@@ -8,7 +8,7 @@ variants:
     managed_paths:
     - config/mcp_config.json
     source_subpath: .mcp.json
-    authoring_path: config/mcp_config.json
+    authoring_path: .agents/mcp_config.json
   pi:
     payload: payload/harnesses/pi
     managed_paths:

@@ -22,7 +22,8 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - config/hooks.json
-    - config/hooks/h01.py
+    source_subpath: config/hooks.json
+    authoring_path: .agents/hooks.json
   pi:
     payload: payload/harnesses/pi
     managed_paths:

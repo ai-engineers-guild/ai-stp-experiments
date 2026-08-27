@@ -19,6 +19,8 @@ variants:
     payload: payload/common
     managed_paths:
     - config/mcp_config.json
+    source_subpath: .mcp.json
+    authoring_path: .agents/mcp_config.json
   grok-build:
     payload: payload/common
     managed_paths:

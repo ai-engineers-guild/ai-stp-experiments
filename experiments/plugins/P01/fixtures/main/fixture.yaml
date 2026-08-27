@@ -32,6 +32,8 @@ variants:
     - antigravity-cli/plugins/ai-stp-p01-plugin/MARKER.txt
     - antigravity-cli/plugins/ai-stp-p01-plugin/plugin.json
     - antigravity-cli/plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md
+    source_subpath: antigravity-cli/plugins/ai-stp-p01-plugin
+    authoring_path: .agents/plugins/ai-stp-p01-plugin
   grok-build:
     payload: payload/harnesses/grok-build
     managed_paths:

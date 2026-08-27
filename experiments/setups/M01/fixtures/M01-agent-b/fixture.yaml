@@ -18,6 +18,8 @@ variants:
     payload: payload/common
     managed_paths:
     - config/agents/M01-agent-b.md
+    source_subpath: agents/M01-agent-b.md
+    authoring_path: .agents/agents/M01-agent-b.md
   grok-build:
     payload: payload/common
     managed_paths:

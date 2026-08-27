@@ -8,7 +8,7 @@ variants:
     managed_paths:
     - config/agents/experiment-a01.md
     source_subpath: agents/experiment-a01.md
-    authoring_path: config/agents/experiment-a01.md
+    authoring_path: .agents/agents/experiment-a01.md
   pi:
     payload: payload/harnesses/pi
     managed_paths:
