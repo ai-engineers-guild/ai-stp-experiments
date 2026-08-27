@@ -10,6 +10,10 @@ observe:
     mode: native_settings
     values:
       enableInstallTelemetry: false
+  antigravity_probe:
+    probe: Start normally with the installed settings. If startup accepts the
+      configuration without error, report `enableTelemetry`; do not inspect files
+      or use tools.
   expect:
     id: S01
     key: enableInstallTelemetry

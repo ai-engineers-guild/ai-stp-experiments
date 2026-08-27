@@ -49,6 +49,10 @@ Rules for the output:
 - Keep the key order shown above and sort every list.
 - `logical_objects` contains only names actually observed in this experiment's
   scope. Use empty lists when none were observed.
+- A setting is observed when the fresh harness starts with it and its declared
+  safe behavioral probe succeeds without a configuration error; in that case,
+  report the setting name from the supplied scope. File existence alone is not
+  sufficient.
 - `managed_paths` contains objects with exactly `path`, `exists` and `kind`.
 - `probe.attempted`, `probe.status`, `probe.markers` and `probe.result` describe
   only what the probe actually returned. Never copy expected markers into the

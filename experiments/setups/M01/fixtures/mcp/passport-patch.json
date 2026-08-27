@@ -16,12 +16,12 @@
     "config/mcp_config.json"
   ],
   "native_ids": [
-    "M01-mcp-a",
-    "M01-mcp-b"
+    "m01-mcp-a",
+    "m01-mcp-b"
   ],
   "entry_points": [
-    "mcpServers.M01-mcp-a",
-    "mcpServers.M01-mcp-b"
+    "mcpServers.m01-mcp-a",
+    "mcpServers.m01-mcp-b"
   ],
   "runtime_requirements": [
     "windows-cmd"
