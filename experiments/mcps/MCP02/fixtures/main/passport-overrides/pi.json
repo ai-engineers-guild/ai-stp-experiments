@@ -1,0 +1,12 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "extensions/experiment-mcp02/package.json",
+    "extensions/experiment-mcp02/index.ts",
+    "extensions/experiment-mcp02/.mcp.json",
+    "extensions/experiment-mcp02/mcp_servers/experiment-mcp02.py"
+  ],
+  "entry_points": [
+    "extensions/experiment-mcp02/index.ts"
+  ]
+}

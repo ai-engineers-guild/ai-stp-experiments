@@ -15,6 +15,16 @@ states:
 fixture_type: component
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
+    payload: payload/common
     managed_paths:
     - config/agents/M02-agent-a.md
+  grok-build:
+    payload: payload/common
+    managed_paths:
+    - agents/M02-agent-a.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/M02-agent-a.ts
+    source_subpath: extensions/M02-agent-a.ts
+    authoring_path: .pi/extensions/M02-agent-a.ts

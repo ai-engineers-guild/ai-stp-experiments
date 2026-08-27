@@ -1,0 +1,11 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "extensions/m05-mcps/package.json",
+    "extensions/m05-mcps/index.ts",
+    "extensions/m05-mcps/.mcp.json"
+  ],
+  "entry_points": [
+    "extensions/m05-mcps/index.ts"
+  ]
+}

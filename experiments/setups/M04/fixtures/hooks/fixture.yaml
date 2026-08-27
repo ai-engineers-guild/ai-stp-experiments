@@ -29,3 +29,11 @@ variants:
     - config/hooks.json
     - config/hooks/h07.py
     - config/hooks/h08.py
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - hooks/hooks.json
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/m04-hooks.ts

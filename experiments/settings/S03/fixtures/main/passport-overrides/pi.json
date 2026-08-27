@@ -1,0 +1,12 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "settings.json"
+  ],
+  "entry_points": [
+    "settings.json"
+  ],
+  "native_ids": [
+    "enableAnalytics"
+  ]
+}

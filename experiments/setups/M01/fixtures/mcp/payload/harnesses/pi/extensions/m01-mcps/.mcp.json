@@ -1,0 +1,6 @@
+{
+  "mcpServers": {
+    "M01-mcp-a": {"command": "py", "args": ["-3", "-u", "mcp_servers/m01-mcp-a.py"]},
+    "M01-mcp-b": {"command": "py", "args": ["-3", "-u", "mcp_servers/m01-mcp-b.py"]}
+  }
+}

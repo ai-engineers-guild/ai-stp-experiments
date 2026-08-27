@@ -28,3 +28,13 @@ variants:
     - antigravity-cli/plugins/ai-stp-p05-plugin/MARKER.txt
     - antigravity-cli/plugins/ai-stp-p05-plugin/plugin.json
     - antigravity-cli/plugins/ai-stp-p05-plugin/skills/ai-stp-p05-plugin/SKILL.md
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - plugins/ai-stp-p05-plugin/MARKER.txt
+    - plugins/ai-stp-p05-plugin/plugin.json
+    - plugins/ai-stp-p05-plugin/skills/ai-stp-p05-plugin/SKILL.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/ai-stp-p05-plugin.ts

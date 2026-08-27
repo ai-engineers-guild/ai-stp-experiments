@@ -1,0 +1,6 @@
+{
+  "name": "ai-stp-p04-plugin",
+  "version": "1.0.0",
+  "description": "Deterministic P04 plugin",
+  "skills": "./skills/"
+}

@@ -16,7 +16,19 @@ minimum_objects:
   setting: 2
   agent: 2
 observe:
-  probe: Use both M01 skills, delegate to both M01 agents, call both M01 MCP probes, and trigger the installed hooks; report every returned marker. Do not edit files.
+  probe: Use both M01 skills, use both M01 agents, call both M01 MCP probes, run
+    `Get-ChildItem .` to trigger H01, and run a harmless shell command containing
+    `AI_STP_H02_TRIGGER`
+    to trigger H02; report every returned marker and hook result. Do not edit files.
+  pi_probe:
+    mode: composite
+    tools: [powershell]
+    commands:
+    - Get-ChildItem .
+    - Write-Output AI_STP_H02_TRIGGER
+    settings:
+      enableInstallTelemetry: false
+      quietStartup: true
   expect:
     skills:
     - M01-skill-a
@@ -35,3 +47,5 @@ observe:
     - M01-agent-b
 variants:
 - antigravity
+- grok-build
+- pi

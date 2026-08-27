@@ -1,0 +1,19 @@
+[mcp_servers.M03_mcp_a]
+command = "python"
+args = ["-u", "-c", '''from mcp.server.fastmcp import FastMCP
+mcp = FastMCP("M03_mcp_a")
+@mcp.tool()
+def probe() -> str:
+ """Return the deterministic M03 A marker."""
+ return "AI_STP_M03_MCP_A"
+mcp.run(transport="stdio")''']
+
+[mcp_servers.M03_mcp_b]
+command = "python"
+args = ["-u", "-c", '''from mcp.server.fastmcp import FastMCP
+mcp = FastMCP("M03_mcp_b")
+@mcp.tool()
+def probe() -> str:
+ """Return the deterministic M03 B marker."""
+ return "AI_STP_M03_MCP_B"
+mcp.run(transport="stdio")''']

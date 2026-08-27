@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreInvocation": [
+      {
+        "type": "command",
+            "command": "python hooks/h06.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

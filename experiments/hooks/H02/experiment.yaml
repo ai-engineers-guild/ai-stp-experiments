@@ -12,5 +12,13 @@ observe:
     output:
       decision: allow
       reason: AI_STP_H02_ALLOW
+  probe: Trigger the installed tool_call hook safely, then call ai_stp_h02_probe and
+    report the exact marker. Do not edit files.
+  pi_probe:
+    mode: hook
+    event: tool_call
+    tool: ai_stp_h02_probe
 variants:
 - antigravity
+- pi
+- grok-build

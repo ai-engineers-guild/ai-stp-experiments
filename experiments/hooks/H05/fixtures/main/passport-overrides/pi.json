@@ -1,0 +1,13 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "extensions/experiment-h05.ts"
+  ],
+  "entry_points": [
+    "extensions/experiment-h05.ts"
+  ],
+  "native_ids": [
+    "before_agent_start"
+  ],
+  "component_type": "hook"
+}

@@ -1,0 +1,1 @@
+{"harness_id":"grok-build","managed_paths":["hooks/hooks.json"],"entry_points":["hooks.SessionEnd","hooks.PostToolUse"]}

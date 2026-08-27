@@ -1,0 +1,1 @@
+{"hooks":{"PostToolUse":[{"hooks":[{"type":"command","command":"python -c \"import os,pathlib;pathlib.Path(os.environ['GROK_HOME'],'hooks','h08.observed').write_text(os.environ['GROK_HOOK_EVENT'])\"","timeout":10}]}]}}

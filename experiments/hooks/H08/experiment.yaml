@@ -12,5 +12,13 @@ observe:
     output:
       injectSteps: []
       terminationBehavior: ''
+  probe: Trigger the installed agent_settled hook safely, then call ai_stp_h08_probe
+    and report the exact marker. Do not edit files.
+  pi_probe:
+    mode: hook
+    event: agent_settled
+    tool: ai_stp_h08_probe
 variants:
 - antigravity
+- pi
+- grok-build

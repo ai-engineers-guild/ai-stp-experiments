@@ -4,10 +4,13 @@ component_type: plugin
 fixtures:
 - main
 observe:
-  probe: Use ai-stp-p01-plugin and report its marker. Do not edit files.
+  probe: Use the installed plugin tool ai_stp_p01_plugin through the harness's normal
+    plugin interface and report its marker. Do not edit files.
   expect:
     id: P01
     plugin: ai-stp-p01-plugin
     marker: AI_STP_P01_PLUGIN
 variants:
 - antigravity
+- pi
+- grok-build

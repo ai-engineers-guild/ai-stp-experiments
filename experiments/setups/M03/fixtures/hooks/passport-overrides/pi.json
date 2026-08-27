@@ -1,0 +1,13 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "extensions/m03-hooks.ts"
+  ],
+  "entry_points": [
+    "extensions/m03-hooks.ts"
+  ],
+  "native_ids": [
+    "tool_result"
+  ],
+  "component_type": "hook"
+}

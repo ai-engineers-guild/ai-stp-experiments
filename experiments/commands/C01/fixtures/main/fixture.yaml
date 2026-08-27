@@ -2,15 +2,31 @@ schema_version: 1
 fixture_type: component
 objects:
 - experiment-c01
-variants: {}
+variants:
+  antigravity:
+    payload: payload/common
+    managed_paths:
+    - .agents/commands/experiment-c01.md
+    source_subpath: commands/experiment-c01.md
+    authoring_path: .agents/commands/experiment-c01.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - prompts/experiment-c01.md
+    source_subpath: prompts/experiment-c01.md
+    authoring_path: .pi/prompts/experiment-c01.md
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - skills/experiment-c01/SKILL.md
 states:
   baseline:
     paths:
-    - path: commands/experiment-c01.md
+    - path: .agents/commands/experiment-c01.md
       exists: false
   installed:
     paths:
-    - path: commands/experiment-c01.md
+    - path: .agents/commands/experiment-c01.md
       exists: true
   restored:
     same_as: baseline

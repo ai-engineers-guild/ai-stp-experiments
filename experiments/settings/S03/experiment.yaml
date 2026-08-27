@@ -6,7 +6,15 @@ fixtures:
 observe:
   expect:
     id: S03
-    key: showFeedbackSurvey
+    key: enableAnalytics
     value: false
+  probe: Start Pi normally with the installed settings and report whether they are
+    accepted without error; do not edit files or use tools.
+  pi_probe:
+    mode: native_settings
+    values:
+      enableAnalytics: false
 variants:
 - antigravity
+- pi
+- grok-build

@@ -19,3 +19,13 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - config/mcp_config.json
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - config.toml
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/m04-mcps/package.json
+    - extensions/m04-mcps/index.ts
+    - extensions/m04-mcps/.mcp.json

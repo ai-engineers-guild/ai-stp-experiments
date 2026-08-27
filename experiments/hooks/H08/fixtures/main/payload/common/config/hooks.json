@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PostInvocation": [
+      {
+        "type": "command",
+            "command": "python hooks/h08.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

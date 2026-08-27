@@ -6,6 +6,13 @@ fixtures:
 - main
 variants:
 - antigravity
+- pi
+- grok-build
 observe:
   expect:
+    marker: AI_STP_MCP08
+  probe: Call the installed MCP tool that returns AI_STP_MCP08 through Pi's normal
+    tool interface and report its exact result. Do not edit files.
+  pi_probe:
+    mode: mcp_marker
     marker: AI_STP_MCP08

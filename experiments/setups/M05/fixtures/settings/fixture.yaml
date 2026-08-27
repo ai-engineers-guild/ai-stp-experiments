@@ -19,3 +19,14 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - antigravity-cli/settings.json
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - config.toml
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - settings.json
+    objects:
+    - quietStartup
+    - enableInstallTelemetry

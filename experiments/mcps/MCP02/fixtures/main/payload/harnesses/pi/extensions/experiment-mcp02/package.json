@@ -1,0 +1,9 @@
+{
+  "name": "experiment-mcp02",
+  "version": "1.0.0",
+  "pi": {
+    "extensions": [
+      "index.ts"
+    ]
+  }
+}

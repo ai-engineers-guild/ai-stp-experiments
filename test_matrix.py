@@ -51,11 +51,11 @@ class MatrixTests(unittest.TestCase):
                 "--category",
                 "hooks",
                 "--id",
-                "H01",
+                "H05",
                 "--harness",
                 "antigravity",
                 "--harness",
-                "pi",
+                "pi-omp",
                 "--os",
                 "windows",
                 "--os",
@@ -67,9 +67,9 @@ class MatrixTests(unittest.TestCase):
                 self.assertEqual(matrix.main(), 0)
             text = output.read_text(encoding="utf-8")
             self.assertEqual(text.count("harness_profile:"), 4)
-            self.assertIn("harness_profile: pi", text)
+            self.assertIn("harness_profile: pi-omp", text)
             self.assertEqual(text.count("expected: unsupported"), 2)
-            self.assertIn("AI_STP_H01_PRETOOLUSE", text)
+            self.assertIn("AI_STP_H05_PREINVOCATION", text)
 
     def test_materialize_applies_overlay_and_passport_override(self) -> None:
         with TemporaryDirectory() as directory:
@@ -97,19 +97,34 @@ class MatrixTests(unittest.TestCase):
                 '"pi"', (output / "passport-patch.json").read_text(encoding="utf-8")
             )
 
-    def test_real_pi_skill_variant_materializes_and_hook_refuses(self) -> None:
+    def test_all_experiments_have_materializable_pi_variants(self) -> None:
         with TemporaryDirectory() as directory:
-            output = Path(directory) / "skill"
-            materialize.materialize(
-                matrix.EXPERIMENTS / "skills/SK01/fixtures/main", "pi", output
-            )
-            self.assertTrue((output / "skills/experiment-sk01/SKILL.md").is_file())
-            with self.assertRaisesRegex(ValueError, "no pi variant"):
-                materialize.materialize(
-                    matrix.EXPERIMENTS / "hooks/H01/fixtures/main",
-                    "pi",
-                    Path(directory) / "hook",
-                )
+            count = 0
+            for row in matrix.cases():
+                self.assertIn("pi", row["variants"], row["id"])
+                for fixture_id in row["fixtures"]:
+                    output = Path(directory) / row["id"] / fixture_id
+                    fixture = matrix.ROOT / row["path"] / "fixtures" / fixture_id
+                    materialize.materialize(fixture, "pi", output)
+                    passport = json.loads(
+                        (output / "passport-patch.json").read_text(encoding="utf-8")
+                    )
+                    self.assertEqual(passport["harness_id"], "pi")
+                    count += 1
+            self.assertGreaterEqual(count, 81)
+
+    def test_pi_matrix_has_no_unsupported_experiments(self) -> None:
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / "matrix.yaml"
+            argv = [
+                "matrix.py", "generate", "--harness", "pi", "--os", "windows",
+                "--output", str(output),
+            ]
+            with patch("sys.argv", argv):
+                self.assertEqual(matrix.main(), 0)
+            generated = matrix.load(output)["experiments"]
+            self.assertEqual(len(generated), 81)
+            self.assertTrue(all(row["expected"] == "runnable" for row in generated))
 
     def test_antigravity_skill_materializes_as_authoring_source(self) -> None:
         with TemporaryDirectory() as directory:
@@ -149,10 +164,38 @@ class MatrixTests(unittest.TestCase):
                 materialize.materialize(root / fixture, "antigravity", output)
                 self.assertTrue((output / "skills" / fixture / "SKILL.md").is_file())
 
-    def test_observer_prompt_only_records_visible_state(self) -> None:
+    def test_all_grok_variants_materialize(self) -> None:
+        with TemporaryDirectory() as directory:
+            count = 0
+            for row in matrix.cases():
+                if "grok-build" not in row["variants"]:
+                    continue
+                for fixture_id in row["fixtures"]:
+                    output = Path(directory) / row["id"] / fixture_id
+                    materialize.materialize(
+                        matrix.ROOT / row["path"] / "fixtures" / fixture_id,
+                        "grok-build",
+                        output,
+                    )
+                    passport = json.loads(
+                        (output / "passport-patch.json").read_text(encoding="utf-8")
+                    )
+                    self.assertEqual(passport["harness_id"], "grok-build")
+                    if row["component_type"] == "mcp":
+                        self.assertTrue((output / "config.toml").is_file())
+                        self.assertFalse((output / ".mcp.json").exists())
+                    count += 1
+            self.assertGreater(count, 0)
+
+    def test_observer_prompt_has_stable_state_contract(self) -> None:
         prompt = matrix.observation_prompt("SK01", "antigravity", "installed")
         self.assertIn("state/SK01-antigravity-installed.yaml", prompt)
-        self.assertIn("Report what is visible now", prompt)
+        self.assertIn("Report facts observed in this new context", prompt)
+        self.assertIn("expected_logical_objects:", prompt)
+        self.assertIn("logical_objects:", prompt)
+        self.assertIn("managed_paths:", prompt)
+        self.assertNotIn("visible:", prompt)
+        self.assertNotIn("notes:", prompt)
         self.assertIn("Do not invoke components during this phase", prompt)
 
     def test_installed_observer_runs_the_declared_probe(self) -> None:
@@ -161,6 +204,51 @@ class MatrixTests(unittest.TestCase):
         )
         self.assertIn("Perform this exact read-only probe", prompt)
         self.assertIn("Use experiment-sk01.", prompt)
+
+    def test_matrix_generates_exactly_one_installed_observer(self) -> None:
+        with self.assertRaises(ValueError):
+            matrix.observation_prompt("SK01", "pi", "baseline")
+        with self.assertRaises(ValueError):
+            matrix.observation_prompt("SK01", "pi", "restored")
+
+    def test_pi_native_probes_are_declared(self) -> None:
+        experiments = matrix.EXPERIMENTS
+        command = matrix.load(experiments / "commands/C01/experiment.yaml")
+        hook = matrix.load(experiments / "hooks/H01/experiment.yaml")
+        setting = matrix.load(experiments / "settings/S01/experiment.yaml")
+        setup = matrix.load(experiments / "setups/M01/experiment.yaml")
+
+        self.assertEqual(command["observe"]["pi_probe"]["input"], "/experiment-c01")
+        self.assertEqual(hook["observe"]["pi_probe"]["tools"], ["powershell"])
+        self.assertFalse(
+            setting["observe"]["pi_probe"]["values"]["enableInstallTelemetry"]
+        )
+        self.assertEqual(setup["observe"]["pi_probe"]["tools"], ["powershell"])
+
+        extension = (
+            experiments
+            / "hooks/H01/fixtures/main/payload/harnesses/pi/extensions/experiment-h01.ts"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"powershell"', extension)
+        hook_override = json.loads(
+            (
+                experiments
+                / "hooks/H01/fixtures/main/passport-overrides/pi.json"
+            ).read_text(encoding="utf-8")
+        )
+        self.assertEqual(hook_override["native_ids"], ["tool_call"])
+
+    def test_pi_runtime_probes_are_observable(self) -> None:
+        root = matrix.EXPERIMENTS
+        h01 = (root / "hooks/H01/fixtures/main/payload/harnesses/pi/extensions/experiment-h01.ts").read_text(encoding="utf-8")
+        m01 = (root / "setups/M01/fixtures/hooks/payload/harnesses/pi/extensions/m01-hooks.ts").read_text(encoding="utf-8")
+        s01 = matrix.load(root / "settings/S01/experiment.yaml")
+        c01 = matrix.load(root / "commands/C01/experiment.yaml")
+        self.assertNotIn("terminate: true", h01 + m01)
+        self.assertIn("AI_STP_H02_ALLOW", m01)
+        self.assertIn('event.toolName === "powershell"', m01)
+        self.assertEqual(s01["observe"]["expect"]["key"], "enableInstallTelemetry")
+        self.assertIn("/experiment-c01", c01["observe"]["probe"])
 
 
 if __name__ == "__main__":

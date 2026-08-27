@@ -16,6 +16,18 @@ states:
 fixture_type: component
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
+    payload: payload/common
     managed_paths:
     - config/mcp_config.json
+  grok-build:
+    payload: payload/common
+    managed_paths:
+    - .mcp.json
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/m01-mcps/package.json
+    - extensions/m01-mcps/index.ts
+    - extensions/m01-mcps/.mcp.json
+    - extensions/m01-mcps/mcp_servers/m01-mcp-a.py
+    - extensions/m01-mcps/mcp_servers/m01-mcp-b.py

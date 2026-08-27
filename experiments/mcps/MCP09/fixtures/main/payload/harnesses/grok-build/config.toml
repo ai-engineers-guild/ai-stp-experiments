@@ -1,0 +1,3 @@
+[mcp_servers.experiment-mcp09]
+command = "python"
+args = ["mcp_servers/experiment-mcp09.py"]

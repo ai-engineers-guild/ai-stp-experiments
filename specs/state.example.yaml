@@ -1,8 +1,8 @@
-schema_version: 1
+schema_version: 2
 experiment_id: SK01
 harness: antigravity
 phase: installed
-visible:
+logical_objects:
   instructions: []
   skills:
   - experiment-sk01
@@ -12,10 +12,14 @@ visible:
   agents: []
   plugins: []
   settings: []
+managed_paths:
+- path: config/skills/experiment-sk01/SKILL.md
+  exists: true
+  kind: file
 probe:
   attempted: true
   status: passed
   markers:
   - AI_STP_SK01
-  notes: []
-notes: []
+  result: null
+errors: []

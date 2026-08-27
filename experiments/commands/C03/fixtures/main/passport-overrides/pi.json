@@ -1,0 +1,10 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "prompts/experiment-c03.md"
+  ],
+  "entry_points": [
+    "prompts/experiment-c03.md"
+  ],
+  "component_type": "command"
+}

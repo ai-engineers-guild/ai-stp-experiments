@@ -1,7 +1,7 @@
 schema_version: 1
 objects:
-- S01
-- S02
+- enableInstallTelemetry
+- quietStartup
 states:
   baseline:
     paths:
@@ -19,3 +19,11 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - antigravity-cli/settings.json
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - config.toml
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - settings.json

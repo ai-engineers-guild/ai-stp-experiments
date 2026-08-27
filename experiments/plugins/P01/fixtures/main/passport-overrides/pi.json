@@ -1,0 +1,6 @@
+{
+  "harness_id": "pi",
+  "projection_kind": "native_files",
+  "managed_paths": ["extensions/ai-stp-p01-plugin.ts"],
+  "entry_points": ["extensions/ai-stp-p01-plugin.ts"]
+}

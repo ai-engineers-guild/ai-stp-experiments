@@ -1,0 +1,9 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "agents/experiment-a01.md"
+  ],
+  "entry_points": [
+    "agents/experiment-a01.md"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "config.toml"
+  ],
+  "entry_points": [
+    "showFeedbackSurvey"
+  ]
+}

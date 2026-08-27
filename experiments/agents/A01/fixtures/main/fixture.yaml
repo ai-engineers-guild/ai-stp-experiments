@@ -4,9 +4,21 @@ objects:
 - experiment-a01
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
+    payload: payload/common
     managed_paths:
     - config/agents/experiment-a01.md
+    source_subpath: agents/experiment-a01.md
+    authoring_path: config/agents/experiment-a01.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/experiment-a01.ts
+    source_subpath: extensions/experiment-a01.ts
+    authoring_path: .pi/extensions/experiment-a01.ts
+  grok-build:
+    payload: payload/common
+    managed_paths:
+    - agents/experiment-a01.md
 states:
   baseline:
     paths:

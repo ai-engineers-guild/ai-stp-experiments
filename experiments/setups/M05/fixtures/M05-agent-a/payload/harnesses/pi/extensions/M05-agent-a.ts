@@ -1,0 +1,1 @@
+export default function (pi: any) { pi.registerTool({ name: "M05_agent_a", label: "M05-agent-a", description: "Setup agent probe", parameters: { type: "object", properties: {} }, async execute() { return { content: [{ type: "text", text: "AI_STP_M05_AGENT_A" }], details: {} }; } }); }

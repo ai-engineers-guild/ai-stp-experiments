@@ -22,9 +22,19 @@ states:
     same_as: baseline
 fixture_type: component
 variants:
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/ai-stp-p01-plugin.ts
   antigravity:
     payload: payload/harnesses/antigravity
     managed_paths:
     - antigravity-cli/plugins/ai-stp-p01-plugin/MARKER.txt
     - antigravity-cli/plugins/ai-stp-p01-plugin/plugin.json
     - antigravity-cli/plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - plugins/ai-stp-p01-plugin/MARKER.txt
+    - plugins/ai-stp-p01-plugin/plugin.json
+    - plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md

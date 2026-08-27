@@ -11,5 +11,13 @@ observe:
     marker: AI_STP_H07_POSTINVOCATION
     output:
       injectSteps: []
+  probe: Trigger the installed agent_end hook safely, then call ai_stp_h07_probe and
+    report the exact marker. Do not edit files.
+  pi_probe:
+    mode: hook
+    event: agent_end
+    tool: ai_stp_h07_probe
 variants:
 - antigravity
+- pi
+- grok-build

@@ -32,5 +32,11 @@ observe:
     subagents:
     - M04-agent-a
     - M04-agent-b
+  probe: Use every installed M04 skill, agent, MCP tool, hook probe and setting; report
+    every marker. Do not edit files.
+  pi_probe:
+    mode: composite
 variants:
 - antigravity
+- pi
+- grok-build

@@ -1,0 +1,7 @@
+{
+  "harness_id": "pi",
+  "component_type": "hook",
+  "managed_paths": ["extensions/experiment-h01.ts"],
+  "native_ids": ["tool_call"],
+  "entry_points": ["extensions/experiment-h01.ts"]
+}

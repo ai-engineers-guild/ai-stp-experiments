@@ -1,0 +1,6 @@
+{
+  "harness_id": "pi",
+  "component_type": "agent",
+  "managed_paths": ["extensions/experiment-a01.ts"],
+  "entry_points": ["extensions/experiment-a01.ts"]
+}

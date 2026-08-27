@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "list_dir",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python hooks/h02.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

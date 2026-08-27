@@ -4,7 +4,14 @@ component_type: hook
 fixtures:
 - main
 observe:
-  probe: Use run_command to run the harmless dir command, then stop; record the PreToolUse denial reason. Do not edit files.
+  probe: Run the harmless read-only command `Get-ChildItem .` through the normal
+    tool interface, then record the blocked result and denial reason. Do not edit
+    files.
+  pi_probe:
+    mode: tool
+    tools: [powershell]
+    input: Use the powershell tool exactly once with `Get-ChildItem .`, then report
+      the exact denial reason.
   expect:
     id: H01
     event: PreToolUse
@@ -15,3 +22,5 @@ observe:
       reason: AI_STP_H01_DENY
 variants:
 - antigravity
+- pi
+- grok-build

@@ -1,0 +1,6 @@
+{
+  "name": "ai-stp-p01-plugin",
+  "version": "1.0.0",
+  "description": "Deterministic P01 plugin",
+  "skills": "./skills/"
+}

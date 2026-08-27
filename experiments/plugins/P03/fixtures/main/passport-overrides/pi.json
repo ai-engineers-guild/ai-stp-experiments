@@ -1,0 +1,10 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "extensions/ai-stp-p03-plugin.ts"
+  ],
+  "entry_points": [
+    "extensions/ai-stp-p03-plugin.ts"
+  ],
+  "component_type": "plugin"
+}

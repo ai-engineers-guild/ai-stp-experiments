@@ -1,0 +1,10 @@
+{
+  "harness_id": "pi",
+  "managed_paths": [
+    "skills/M05-skill-b/SKILL.md"
+  ],
+  "entry_points": [
+    "SKILL.md"
+  ],
+  "component_type": "skill"
+}

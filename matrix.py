@@ -46,21 +46,70 @@ def load(path: Path) -> dict:
 
 
 def observation_prompt(
-    experiment_id: str, harness: str, phase: str, probe: str | None = None
+    experiment_id: str,
+    harness: str,
+    phase: str,
+    probe: str | None = None,
+    expected_logical_objects: str | None = None,
+    managed_paths: str | None = None,
 ) -> str:
-    if phase not in {"baseline", "installed", "restored"}:
+    if phase != "installed":
         raise ValueError(f"unknown observation phase: {phase}")
+    if expected_logical_objects is None or managed_paths is None:
+        row = next(row for row in cases() if row["id"] == experiment_id)
+        default_objects, default_paths = observation_scope(row, harness)
+        expected_logical_objects = expected_logical_objects or default_objects
+        managed_paths = managed_paths or default_paths
     state_file = f"state/{experiment_id}-{harness}-{phase}.yaml"
     return OBSERVER_PROMPT.read_text(encoding="utf-8").format(
         experiment_id=experiment_id,
         harness=harness,
         phase=phase,
         state_file=state_file,
+        expected_logical_objects=expected_logical_objects,
+        managed_paths=managed_paths,
         probe_instruction=(
             f"Perform this exact read-only probe after inventory: {probe}"
-            if phase == "installed" and probe
+            if probe
             else "Do not invoke components during this phase."
         ),
+    )
+
+
+def observation_scope(row: dict, harness: str) -> tuple[str, str]:
+    category_by_type = {
+        component_type: category for category, component_type in CATEGORIES.items()
+    }
+    objects = {category: [] for category in CATEGORIES}
+    paths: list[str] = []
+    for fixture in row["fixtures"]:
+        fixture_root = ROOT / row["path"] / "fixtures" / fixture
+        document = load(fixture_root / "fixture.yaml")
+        passport = json.loads(
+            (fixture_root / "passport-patch.json").read_text(encoding="utf-8")
+        )
+        category = category_by_type[passport["component_type"]]
+        variant = document.get("variants", {}).get(harness, {})
+        objects[category].extend(
+            str(item)
+            for item in variant.get("objects", document.get("objects", []))
+        )
+        paths.extend(str(item) for item in variant.get("managed_paths", []))
+    return (
+        yaml.safe_dump(
+            {
+                "expected_logical_objects": {
+                    key: sorted(set(value)) for key, value in objects.items()
+                }
+            },
+            sort_keys=False,
+            allow_unicode=True,
+        ).rstrip(),
+        yaml.safe_dump(
+            {"managed_paths": sorted(set(paths))},
+            sort_keys=False,
+            allow_unicode=True,
+        ).rstrip(),
     )
 
 
@@ -221,12 +270,10 @@ def main() -> int:
             "os": system,
             "variant_available": harness in row["variants"],
             "expected": "runnable" if harness in row["variants"] else "unsupported",
-            "observer_prompts": {
-                phase: observation_prompt(
-                    row["id"], harness, phase, row["observation"].get("probe")
-                )
-                for phase in ("baseline", "installed", "restored")
-            },
+            "observer_prompt": observation_prompt(
+                row["id"], harness, "installed", row["observation"].get("probe"),
+                *observation_scope(row, harness),
+            ),
         }
         for row, harness, system in product(selected, harnesses, systems)
     ]

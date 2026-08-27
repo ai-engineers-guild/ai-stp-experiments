@@ -8,6 +8,7 @@ variants:
 - antigravity
 - pi
 - pi-omp
+- grok-build
 observe:
   probe: Use experiment-sk01 and report its marker. Do not edit files.
   expect:

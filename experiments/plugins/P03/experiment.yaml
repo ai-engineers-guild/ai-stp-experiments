@@ -8,5 +8,12 @@ observe:
     id: P03
     plugin: ai-stp-p03-plugin
     marker: AI_STP_P03_PLUGIN
+  probe: Use the installed plugin tool ai_stp_p03_plugin and report its marker. Do
+    not edit files.
+  pi_probe:
+    mode: tool
+    tool: ai_stp_p03_plugin
 variants:
 - antigravity
+- pi
+- grok-build

@@ -26,7 +26,7 @@ experiments/<category>/<experiment-id>/
 
 `experiment.yaml` владеет гипотезой, доступными provider-вариантами, порядком
 фикстур и ожидаемым наблюдением. `fixture.yaml` владеет одним физическим компонентом,
-логическими объектами внутри него и тремя ожидаемыми состояниями:
+логическими объектами внутри него и тремя механически проверяемыми состояниями:
 
 - `baseline` — состояние до операции;
 - `installed` — состояние после установки и наблюдения;
@@ -46,11 +46,11 @@ Payload является исходным компонентом, а не гот
 
 ```text
 любой controller harness + skill ai-stp
-→ observer prompt: baseline
-→ backup/install через ai-stp и setup-system
+→ backup через ai-stp и setup-system
+→ install через ai-stp и setup-system
 → observer prompt: installed
 → rollback через ai-stp и setup-system
-→ observer prompt: restored
+→ механическое сравнение managed state с backup
 ```
 
 Репозиторий не вызывает CLI, provider или harness. Любой controller harness
@@ -59,15 +59,15 @@ Payload является исходным компонентом, а не гот
 skill, а не корпус экспериментов. Только provider, вызванный через `ai-stp`, пишет
 target, создаёт backup и выполняет rollback по точному `backup_ref`.
 
-Observer ничего не устанавливает, не удаляет, не включает, не выключает и не
-использует. Он перечисляет по именам видимые `instruction`, `skill`, `mcp`,
+Observer вызывается ровно один раз между install и rollback. Он ничего не
+устанавливает, не удаляет, не включает и не выключает. Он перечисляет по именам видимые `instruction`, `skill`, `mcp`,
 `hook`, `command`, `agent`, `plugin` и `setting`, после чего пишет отдельный
-`state/<experiment>-<harness>-<phase>.yaml`. Пустая категория записывается как
+`state/<experiment>-<harness>-installed.yaml`. Пустая категория записывается как
 пустой список, ненаблюдаемая — как пустой список с пояснением в `notes`.
 
-Три state-файла являются наблюдениями харнесса, а не доказательством provider
-операций. Plan digest, operation, backup, status и rollback evidence сохраняет
-controller harness из машинных ответов `ai-stp`.
+Observer YAML является наблюдением харнесса, а не доказательством provider
+операций. Plan digest, operation, backup, managed state и rollback evidence
+сохраняет controller harness из машинных ответов `ai-stp`.
 
 Результаты, логи, snapshots и сгенерированная матрица являются локальными
 артефактами и не коммитятся.
@@ -81,8 +81,7 @@ controller harness из машинных ответов `ai-stp`.
 - пути и команды не содержат machine-specific абсолютных путей;
 - harness overlay не заменяет общий manifest или паспорт;
 - setup содержит минимум по два skill, hook, mcp, setting и agent;
-- для каждой строки матрицы генерируются конкретные baseline, installed и
-  restored observer prompts с отдельными state-файлами;
+- для каждой строки матрицы генерируется ровно один installed observer prompt;
 - observer только инвентаризирует видимые объекты и не выполняет sample task;
 - lifecycle не кодируется списком команд в этом репозитории;
 - одна команда строит матрицу по OS, harness, category, experiment и fixture.

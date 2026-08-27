@@ -1,0 +1,11 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "plugins/ai-stp-p04-plugin/MARKER.txt",
+    "plugins/ai-stp-p04-plugin/plugin.json",
+    "plugins/ai-stp-p04-plugin/skills/ai-stp-p04-plugin/SKILL.md"
+  ],
+  "entry_points": [
+    "plugin.json"
+  ]
+}

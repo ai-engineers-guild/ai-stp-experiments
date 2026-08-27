@@ -1,0 +1,5 @@
+{
+  "harness_id": "pi",
+  "managed_paths": ["skills/M01-skill-b/SKILL.md"],
+  "entry_points": ["SKILL.md"]
+}

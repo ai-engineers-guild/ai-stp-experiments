@@ -1,0 +1,9 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "skills/M05-skill-a/SKILL.md"
+  ],
+  "entry_points": [
+    "SKILL.md"
+  ]
+}

@@ -1,0 +1,8 @@
+[mcp_servers.experiment_mcp01]
+command = "python"
+args = ["-u", "-c", '''from mcp.server.fastmcp import FastMCP
+mcp = FastMCP("experiment_mcp01")
+@mcp.tool()
+def ai_stp_mcp01_probe() -> str:
+ return "AI_STP_MCP01"
+mcp.run(transport="stdio")''']

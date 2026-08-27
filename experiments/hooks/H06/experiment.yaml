@@ -12,5 +12,13 @@ observe:
     output:
       injectSteps:
       - userMessage: Reply with AI_STP_H06_PRE
+  probe: Trigger the installed before_agent_start hook safely, then call ai_stp_h06_probe
+    and report the exact marker. Do not edit files.
+  pi_probe:
+    mode: hook
+    event: before_agent_start
+    tool: ai_stp_h06_probe
 variants:
 - antigravity
+- pi
+- grok-build

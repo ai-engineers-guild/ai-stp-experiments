@@ -13,13 +13,13 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    "commands/experiment-c03.md"
+    ".agents/commands/experiment-c03.md"
   ],
   "native_ids": [
     "experiment-c03"
   ],
   "entry_points": [
-    "commands/experiment-c03.md"
+    ".agents/commands/experiment-c03.md"
   ],
   "runtime_requirements": [],
   "provides_capabilities": [],

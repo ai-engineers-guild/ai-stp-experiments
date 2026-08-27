@@ -1,0 +1,10 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "config.toml",
+    "mcp_servers/experiment-mcp16.py"
+  ],
+  "entry_points": [
+    "mcpServers.experiment-mcp16"
+  ]
+}

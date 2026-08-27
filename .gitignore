@@ -13,3 +13,6 @@ __pycache__/
 .ruff_cache/
 .venv/
 *.egg-info/
+.pytest_cache/
+.tmp/
+dist/

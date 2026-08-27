@@ -8,6 +8,7 @@ variants:
 - antigravity
 - pi
 - pi-omp
+- grok-build
 observe:
   expect:
     marker: AI_STP_SK17

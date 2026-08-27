@@ -40,6 +40,12 @@ def materialize(fixture: Path, harness: str, output: Path) -> None:
         output.mkdir(parents=True)
     if overlay.is_dir():
         shutil.copytree(overlay, output, dirs_exist_ok=True)
+    for relative in variant.get("exclude", []):
+        path = output / relative
+        if path.is_dir():
+            shutil.rmtree(path)
+        elif path.exists():
+            path.unlink()
     source_subpath = variant.get("source_subpath")
     authoring_path = variant.get("authoring_path")
     base_passport = json.loads(

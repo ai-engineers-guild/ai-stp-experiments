@@ -8,5 +8,12 @@ observe:
     id: P04
     plugin: ai-stp-p04-plugin
     marker: AI_STP_P04_PLUGIN
+  probe: Use the installed plugin tool ai_stp_p04_plugin and report its marker. Do
+    not edit files.
+  pi_probe:
+    mode: tool
+    tool: ai_stp_p04_plugin
 variants:
 - antigravity
+- pi
+- grok-build

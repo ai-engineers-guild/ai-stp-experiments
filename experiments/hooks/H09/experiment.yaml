@@ -11,5 +11,13 @@ observe:
     marker: AI_STP_H09_STOP
     output:
       decision: stop
+  probe: Trigger the installed input hook safely, then call ai_stp_h09_probe and report
+    the exact marker. Do not edit files.
+  pi_probe:
+    mode: hook
+    event: input
+    tool: ai_stp_h09_probe
 variants:
 - antigravity
+- pi
+- grok-build

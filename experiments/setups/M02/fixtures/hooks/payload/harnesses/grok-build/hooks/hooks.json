@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python hooks/h03.py",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "list_dir",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python hooks/h04.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

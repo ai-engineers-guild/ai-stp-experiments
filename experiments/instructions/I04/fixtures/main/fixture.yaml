@@ -3,13 +3,21 @@ fixture_type: component
 objects:
 - experiment-i04
 variants:
+  antigravity:
+    payload: payload/common
+    managed_paths:
+    - AGENTS.md
   pi:
-    payload: payload/harnesses/pi
+    payload: payload/common
     managed_paths: &id001
     - AGENTS.md
   pi-omp:
-    payload: payload/harnesses/pi-omp
+    payload: payload/common
     managed_paths: *id001
+  grok-build:
+    payload: payload/common
+    managed_paths:
+    - AGENTS.md
 states:
   baseline:
     paths:

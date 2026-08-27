@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreInvocation": [
+      {
+        "type": "command",
+            "command": "python hooks/h05.py",
+        "timeout": 10
+      }
+    ]
+  }
+}

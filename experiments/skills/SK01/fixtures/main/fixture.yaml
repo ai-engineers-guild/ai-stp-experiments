@@ -4,21 +4,19 @@ objects:
 - experiment-sk01
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
-    source_subpath: config/skills/experiment-sk01
-    authoring_path: skills/experiment-sk01
+    payload: payload/common
     managed_paths:
     - config/skills/experiment-sk01/SKILL.md
   pi:
-    payload: payload/harnesses/pi
-    source_subpath: skills/experiment-sk01
-    authoring_path: skills/experiment-sk01
+    payload: payload/common
     managed_paths:
     - skills/experiment-sk01/SKILL.md
   pi-omp:
-    payload: payload/harnesses/pi-omp
-    source_subpath: skills/experiment-sk01
-    authoring_path: skills/experiment-sk01
+    payload: payload/common
+    managed_paths:
+    - skills/experiment-sk01/SKILL.md
+  grok-build:
+    payload: payload/common
     managed_paths:
     - skills/experiment-sk01/SKILL.md
 states:

@@ -1,6 +1,6 @@
 schema_version: 1
 objects:
-- enableTelemetry
+- enableInstallTelemetry
 states:
   baseline:
     paths:
@@ -14,7 +14,15 @@ states:
     same_as: baseline
 fixture_type: component
 variants:
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - settings.json
   antigravity:
     payload: payload/harnesses/antigravity
     managed_paths:
     - antigravity-cli/settings.json
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - config.toml

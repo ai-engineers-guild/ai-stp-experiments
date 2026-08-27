@@ -4,7 +4,15 @@ component_type: command
 scenario: multiline
 fixtures:
 - main
-variants: []
+variants:
+- antigravity
+- pi
+- grok-build
 observe:
   expect:
     marker: AI_STP_C03
+  probe: Invoke the installed native prompt command `/experiment-c03` and report
+    its exact result. Do not edit files.
+  pi_probe:
+    mode: exact_input
+    input: /experiment-c03

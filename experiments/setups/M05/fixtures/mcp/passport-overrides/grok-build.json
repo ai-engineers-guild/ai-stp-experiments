@@ -1,0 +1,10 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    ".mcp.json"
+  ],
+  "entry_points": [
+    "mcpServers.M05-mcp-a",
+    "mcpServers.M05-mcp-b"
+  ]
+}

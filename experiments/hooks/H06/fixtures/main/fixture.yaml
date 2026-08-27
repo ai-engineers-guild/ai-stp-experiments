@@ -23,3 +23,11 @@ variants:
     managed_paths:
     - config/hooks.json
     - config/hooks/h06.py
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - hooks/hooks.json
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/experiment-h06.ts

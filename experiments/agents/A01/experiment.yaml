@@ -6,7 +6,10 @@ fixtures:
 - main
 variants:
 - antigravity
+- pi
+- grok-build
 observe:
-  probe: Delegate to experiment-a01 and report its reply. Do not edit files.
+  probe: Use the installed agent experiment_a01 through the harness's normal agent
+    interface and report its reply. Do not edit files.
   expect:
     marker: AI_STP_A01

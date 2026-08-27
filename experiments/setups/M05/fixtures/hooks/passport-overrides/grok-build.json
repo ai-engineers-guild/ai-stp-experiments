@@ -1,0 +1,11 @@
+{
+  "harness_id": "grok-build",
+  "managed_paths": [
+    "hooks/hooks.json",
+    "hooks/h09.py",
+    "hooks/h10.py"
+  ],
+  "entry_points": [
+    "hooks.Stop"
+  ]
+}

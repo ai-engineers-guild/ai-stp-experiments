@@ -4,10 +4,24 @@ objects:
 - experiment-mcp13
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
+    payload: payload/common
     managed_paths:
     - config/mcp_config.json
     - config/mcp_servers/experiment-mcp13.py
+  grok-build:
+    payload: payload/harnesses/grok-build
+    exclude:
+    - .mcp.json
+    managed_paths:
+    - config.toml
+    - mcp_servers/experiment-mcp13.py
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/experiment-mcp13/package.json
+    - extensions/experiment-mcp13/index.ts
+    - extensions/experiment-mcp13/.mcp.json
+    - extensions/experiment-mcp13/mcp_servers/experiment-mcp13.py
 states:
   baseline:
     paths:

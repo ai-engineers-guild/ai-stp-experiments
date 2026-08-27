@@ -18,3 +18,11 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - config/agents/M04-agent-a.md
+  grok-build:
+    payload: payload/harnesses/grok-build
+    managed_paths:
+    - agents/M04-agent-a.md
+  pi:
+    payload: payload/harnesses/pi
+    managed_paths:
+    - extensions/M04-agent-a.ts

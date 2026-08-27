@@ -4,10 +4,17 @@ component_type: setting
 fixtures:
 - main
 observe:
-  probe: Start normally and reply with OK; do not inspect protected configuration or use tools.
+  probe: Start normally with the installed settings and report whether the harness
+    accepts them without error; do not inspect files or use tools.
+  pi_probe:
+    mode: native_settings
+    values:
+      enableInstallTelemetry: false
   expect:
     id: S01
-    key: enableTelemetry
+    key: enableInstallTelemetry
     value: false
 variants:
 - antigravity
+- pi
+- grok-build

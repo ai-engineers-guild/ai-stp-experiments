@@ -4,15 +4,19 @@ objects:
 - experiment-sk13
 variants:
   antigravity:
-    payload: payload/harnesses/antigravity
+    payload: payload/common
     managed_paths:
     - config/skills/experiment-sk13/SKILL.md
   pi:
-    payload: payload/harnesses/pi
+    payload: payload/common
     managed_paths:
     - skills/experiment-sk13/SKILL.md
   pi-omp:
-    payload: payload/harnesses/pi-omp
+    payload: payload/common
+    managed_paths:
+    - skills/experiment-sk13/SKILL.md
+  grok-build:
+    payload: payload/common
     managed_paths:
     - skills/experiment-sk13/SKILL.md
 states:

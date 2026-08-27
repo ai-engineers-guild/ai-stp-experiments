@@ -6,6 +6,13 @@ fixtures:
 - main
 variants:
 - antigravity
+- pi
+- grok-build
 observe:
   expect:
     marker: AI_STP_A02
+  probe: Use the installed agent experiment_a02 through Pi's normal agent tool interface
+    and report its reply. Do not edit files.
+  pi_probe:
+    mode: tool
+    tool: experiment_a02
