@@ -16,7 +16,8 @@ minimum_objects:
   setting: 2
   agent: 2
 observe:
-  probe: Use both M01 skills, use both M01 agents, call both M01 MCP probes, run
+  probe: Use both M01 skills, use both M01 agents, call MCP tools
+    `m01_mcp_a_probe` and `m01_mcp_b_probe`, run
     `Get-ChildItem .` to trigger H01, and run a harmless shell command containing
     `AI_STP_H02_TRIGGER`
     to trigger H02; confirm startup accepts `enableTelemetry` and `showTips`, and
