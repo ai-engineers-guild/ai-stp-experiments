@@ -1,6 +1,0 @@
-# Copy to harnesses.local.yaml and override only machine-specific values.
-pi-omp:
-  target: /absolute/path/to/disposable/omp/agent
-  provider: /absolute/path/to/pi-setup-system
-  profile: test-profile
-  model: provider/model

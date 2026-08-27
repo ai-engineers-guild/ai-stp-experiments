@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python config/hooks/h01.py",
+            "command": "python hooks/h01.py",
             "timeout": 10
           }
         ]

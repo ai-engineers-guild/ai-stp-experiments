@@ -19,7 +19,7 @@
     "experiment-sk01"
   ],
   "entry_points": [
-    "config/skills/experiment-sk01/SKILL.md"
+    "SKILL.md"
   ],
   "runtime_requirements": [],
   "provides_capabilities": [],

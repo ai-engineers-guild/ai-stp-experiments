@@ -3,7 +3,7 @@
     "PreInvocation": [
       {
         "type": "command",
-        "command": "python config/hooks/h05.py",
+            "command": "python hooks/h05.py",
         "timeout": 10
       }
     ]

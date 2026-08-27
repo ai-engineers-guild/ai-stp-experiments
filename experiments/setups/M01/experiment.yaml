@@ -16,6 +16,7 @@ minimum_objects:
   setting: 2
   agent: 2
 observe:
+  probe: Use both M01 skills, delegate to both M01 agents, call both M01 MCP probes, and trigger the installed hooks; report every returned marker. Do not edit files.
   expect:
     skills:
     - M01-skill-a

@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python config/hooks/h03.py",
+            "command": "python hooks/h03.py",
             "timeout": 10
           }
         ]

@@ -13,15 +13,13 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    "config/mcp_config.json",
-    "config/mcp_servers/experiment-mcp01.py"
+    "config/mcp_config.json"
   ],
   "native_ids": [
     "experiment-mcp01"
   ],
   "entry_points": [
-    "config/mcp_config.json",
-    "config/mcp_servers/experiment-mcp01.py"
+    "mcpServers.experiment-mcp01"
   ],
   "runtime_requirements": [
     "python>=3.11"
@@ -35,7 +33,7 @@
     "filesystem": [],
     "network": [],
     "process": [
-      "python"
+      "py"
     ]
   }
 }

@@ -4,6 +4,7 @@ component_type: hook
 fixtures:
 - main
 observe:
+  probe: Use run_command to run the harmless dir command, then stop; record the PreToolUse denial reason. Do not edit files.
   expect:
     id: H01
     event: PreToolUse

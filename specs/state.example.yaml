@@ -1,0 +1,21 @@
+schema_version: 1
+experiment_id: SK01
+harness: antigravity
+phase: installed
+visible:
+  instructions: []
+  skills:
+  - experiment-sk01
+  mcps: []
+  hooks: []
+  commands: []
+  agents: []
+  plugins: []
+  settings: []
+probe:
+  attempted: true
+  status: passed
+  markers:
+  - AI_STP_SK01
+  notes: []
+notes: []

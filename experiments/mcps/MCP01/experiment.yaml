@@ -7,5 +7,6 @@ fixtures:
 variants:
 - antigravity
 observe:
+  probe: Delegate to a subagent with MCP capabilities, call ai_stp_mcp01_probe from experiment-mcp01, and report its exact result. Do not edit files.
   expect:
     marker: AI_STP_MCP01

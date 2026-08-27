@@ -12,6 +12,7 @@ import yaml
 
 ROOT = Path(__file__).parent
 EXPERIMENTS = ROOT / "experiments"
+OBSERVER_PROMPT = ROOT / "prompts" / "observe-state.md"
 CATEGORIES = {
     "instructions": "instruction",
     "skills": "skill",
@@ -44,6 +45,25 @@ def load(path: Path) -> dict:
     return value
 
 
+def observation_prompt(
+    experiment_id: str, harness: str, phase: str, probe: str | None = None
+) -> str:
+    if phase not in {"baseline", "installed", "restored"}:
+        raise ValueError(f"unknown observation phase: {phase}")
+    state_file = f"state/{experiment_id}-{harness}-{phase}.yaml"
+    return OBSERVER_PROMPT.read_text(encoding="utf-8").format(
+        experiment_id=experiment_id,
+        harness=harness,
+        phase=phase,
+        state_file=state_file,
+        probe_instruction=(
+            f"Perform this exact read-only probe after inventory: {probe}"
+            if phase == "installed" and probe
+            else "Do not invoke components during this phase."
+        ),
+    )
+
+
 def cases(
     categories: list[str] | None = None, ids: set[str] | None = None
 ) -> list[dict]:
@@ -68,6 +88,7 @@ def cases(
                         "path": directory.relative_to(ROOT).as_posix(),
                         "fixtures": document.get("fixtures", []),
                         "variants": document.get("variants", []),
+                    "observation": document.get("observe", {}),
                     }
                 )
     return rows
@@ -101,6 +122,8 @@ def validate() -> list[dict]:
     if counts != EXPECTED_COUNTS:
         raise ValueError(f"experiment count mismatch: {counts}")
     profiles = set(load(ROOT / "harnesses.yaml"))
+    if not OBSERVER_PROMPT.is_file():
+        raise ValueError("observer prompt missing")
     for row in rows:
         root = ROOT / row["path"]
         manifest = load(root / "experiment.yaml")
@@ -112,6 +135,10 @@ def validate() -> list[dict]:
             raise ValueError(f"{row['id']}: fixtures must be a unique non-empty list")
         if not set(row["variants"]) <= profiles:
             raise ValueError(f"{row['id']}: unknown harness profile")
+        if not isinstance(row["observation"], dict) or not row["observation"].get(
+            "expect"
+        ):
+            raise ValueError(f"{row['id']}: expected observation missing")
         object_counts: dict[str, int] = {}
         for fixture_id in row["fixtures"]:
             fixture = root / "fixtures" / fixture_id
@@ -138,6 +165,16 @@ def validate() -> list[dict]:
                 if not payload.is_dir():
                     raise ValueError(
                         f"{row['id']}/{fixture_id}: {profile} payload missing"
+                    )
+                source_subpath = variant.get("source_subpath")
+                authoring_path = variant.get("authoring_path")
+                if bool(source_subpath) != bool(authoring_path):
+                    raise ValueError(
+                        f"{row['id']}/{fixture_id}: source mapping must be paired"
+                    )
+                if source_subpath and not (payload / source_subpath).exists():
+                    raise ValueError(
+                        f"{row['id']}/{fixture_id}: source subpath missing"
                     )
             component_type = patch.get("component_type")
             object_counts[component_type] = object_counts.get(component_type, 0) + len(
@@ -184,6 +221,12 @@ def main() -> int:
             "os": system,
             "variant_available": harness in row["variants"],
             "expected": "runnable" if harness in row["variants"] else "unsupported",
+            "observer_prompts": {
+                phase: observation_prompt(
+                    row["id"], harness, phase, row["observation"].get("probe")
+                )
+                for phase in ("baseline", "installed", "restored")
+            },
         }
         for row, harness, system in product(selected, harnesses, systems)
     ]

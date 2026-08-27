@@ -1,6 +1,7 @@
 # ai-stp experiments
 
-Private cross-platform corpus for testing `ai-stp CLI × provider × OS × harness × component`.
+Private cross-platform corpus of hypotheses, fixtures and observation prompts for
+testing `ai-stp × setup-system × OS × harness × component`.
 
 ```text
 experiments/
@@ -26,18 +27,17 @@ python -m pip install .
 python matrix.py validate
 python matrix.py generate --category hooks --id H01 --harness antigravity --os windows
 python materialize.py experiments/hooks/H01/fixtures/main --harness antigravity --output _generated/H01
-python compose.py experiments/skills/SK01 --harness pi-omp --output _generated/SK01-pi-omp.yaml
-python doctor.py --profile antigravity
-python run_experiment.py _generated/SK01-pi-omp.yaml --run-root runs/SK01-pi-omp
 ```
 
-`run_experiment.py` uses an isolated HOME by default, records target snapshots,
-runs cleanup/rollback in `finally`, and fails if the restored target differs from
-the baseline. A real target requires both `--live-target` and the exact resolved
-`--confirm-target`; target writes still belong only to ai-stp and its provider.
-`compose.py` refuses unavailable variants before touching a target and generates
-the complete ai-stp + delegate + rollback lifecycle for both single components
-and multi-fixture setups.
+This repository does not execute `ai-stp`, providers or harnesses. Any controller
+harness reads one generated matrix row and uses its installed `ai-stp` skill to
+perform backup, setup installation and rollback on any target harness. Controller
+and target are independent matrix dimensions and may name the same harness. The
+target receives the generated observer prompt at `baseline`, `installed` and
+`restored`; it only lists visible objects and writes the requested local state
+YAML. It does not invoke components or change configuration. The same matrix row
+carries the experiment's expected observation so the controller can compare it
+with the three state files without telling the observer what it should find.
 
-Machine-specific executable, delegate and provider paths belong in ignored
-`harnesses.local.yaml`. Generated matrices, runs, results and logs are ignored.
+Generated matrices, state files, results and logs are ignored. The controlling
+controller owns execution evidence outside this declarative corpus.

@@ -4,7 +4,6 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
-import compose
 import materialize
 import matrix
 
@@ -70,6 +69,7 @@ class MatrixTests(unittest.TestCase):
             self.assertEqual(text.count("harness_profile:"), 4)
             self.assertIn("harness_profile: pi", text)
             self.assertEqual(text.count("expected: unsupported"), 2)
+            self.assertIn("AI_STP_H01_PRETOOLUSE", text)
 
     def test_materialize_applies_overlay_and_passport_override(self) -> None:
         with TemporaryDirectory() as directory:
@@ -103,9 +103,7 @@ class MatrixTests(unittest.TestCase):
             materialize.materialize(
                 matrix.EXPERIMENTS / "skills/SK01/fixtures/main", "pi", output
             )
-            self.assertTrue(
-                (output / "skills/experiment-sk01/SKILL.md").is_file()
-            )
+            self.assertTrue((output / "skills/experiment-sk01/SKILL.md").is_file())
             with self.assertRaisesRegex(ValueError, "no pi variant"):
                 materialize.materialize(
                     matrix.EXPERIMENTS / "hooks/H01/fixtures/main",
@@ -113,29 +111,56 @@ class MatrixTests(unittest.TestCase):
                     Path(directory) / "hook",
                 )
 
-    def test_compose_builds_full_setup_lifecycle_and_rejects_missing_variant(
-        self,
-    ) -> None:
+    def test_antigravity_skill_materializes_as_authoring_source(self) -> None:
         with TemporaryDirectory() as directory:
-            output = Path(directory) / "M01.yaml"
-            task = compose.compose(
-                matrix.EXPERIMENTS / "setups/M01", "antigravity", output
+            output = Path(directory) / "out"
+            materialize.materialize(
+                matrix.ROOT / "experiments/skills/SK01/fixtures/main",
+                "antigravity",
+                output,
             )
-            self.assertEqual(len(task["phases"]["cleanup"]), 3)
-            self.assertEqual(
-                len(
-                    [
-                        step
-                        for step in task["phases"]["prepare"]
-                        if step["id"].startswith("adopt-")
-                    ]
-                ),
-                7,
+            self.assertTrue(
+                (output / "skills/experiment-sk01/SKILL.md").is_file()
             )
-            with self.assertRaisesRegex(ValueError, "no pi provider variant"):
-                compose.compose(
-                    matrix.EXPERIMENTS / "hooks/H01", "pi", Path(directory) / "H01.yaml"
+            self.assertFalse((output / "config").exists())
+
+    def test_all_skills_materialize_as_discoverable_sources(self) -> None:
+        with TemporaryDirectory() as directory:
+            for row in matrix.cases(["skills"]):
+                output = Path(directory) / row["id"]
+                materialize.materialize(
+                    matrix.ROOT / row["path"] / "fixtures/main",
+                    "antigravity",
+                    output,
                 )
+                passport = json.loads(
+                    (output / "passport-patch.json").read_text(encoding="utf-8")
+                )
+                self.assertTrue(
+                    (output / "skills" / passport["name"] / "SKILL.md").is_file()
+                )
+                self.assertEqual(passport["entry_points"], ["SKILL.md"])
+
+    def test_setup_skills_materialize_as_discoverable_sources(self) -> None:
+        with TemporaryDirectory() as directory:
+            root = matrix.EXPERIMENTS / "setups/M01/fixtures"
+            for fixture in ("M01-skill-a", "M01-skill-b"):
+                output = Path(directory) / fixture
+                materialize.materialize(root / fixture, "antigravity", output)
+                self.assertTrue((output / "skills" / fixture / "SKILL.md").is_file())
+
+    def test_observer_prompt_only_records_visible_state(self) -> None:
+        prompt = matrix.observation_prompt("SK01", "antigravity", "installed")
+        self.assertIn("state/SK01-antigravity-installed.yaml", prompt)
+        self.assertIn("Report what is visible now", prompt)
+        self.assertIn("Do not invoke components during this phase", prompt)
+
+    def test_installed_observer_runs_the_declared_probe(self) -> None:
+        prompt = matrix.observation_prompt(
+            "SK01", "antigravity", "installed", "Use experiment-sk01."
+        )
+        self.assertIn("Perform this exact read-only probe", prompt)
+        self.assertIn("Use experiment-sk01.", prompt)
 
 
 if __name__ == "__main__":

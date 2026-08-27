@@ -3,7 +3,7 @@
     "Stop": [
       {
         "type": "command",
-        "command": "python config/hooks/h09.py",
+            "command": "python hooks/h09.py",
         "timeout": 10
       }
     ]

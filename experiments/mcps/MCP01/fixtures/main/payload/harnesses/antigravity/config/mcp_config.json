@@ -1,9 +1,12 @@
 {
   "mcpServers": {
     "experiment-mcp01": {
-      "command": "python",
+      "command": "py",
       "args": [
-        "config/mcp_servers/experiment-mcp01.py"
+        "-3",
+        "-u",
+        "-c",
+        "import json,sys; marker='AI_STP_MCP01'; tools=[{'name':'ai_stp_mcp01_probe','description':marker,'inputSchema':{'type':'object','properties':{}}}];\nfor line in sys.stdin:\n r=json.loads(line); m=r.get('method')\n if m and m.startswith('notifications/'): continue\n out={'jsonrpc':'2.0','id':r.get('id')}; out.update({'result':{'protocolVersion':'2024-11-05','capabilities':{'tools':{}},'serverInfo':{'name':'experiment-mcp01','version':'1'}}} if m=='initialize' else {'result':{'tools':tools}} if m=='tools/list' else {'result':{'content':[{'type':'text','text':marker}]}} if m=='tools/call' else {'result':{}}); print(json.dumps(out),flush=True)"
       ]
     }
   }

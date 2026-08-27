@@ -4,6 +4,7 @@ component_type: plugin
 fixtures:
 - main
 observe:
+  probe: Use ai-stp-p01-plugin and report its marker. Do not edit files.
   expect:
     id: P01
     plugin: ai-stp-p01-plugin

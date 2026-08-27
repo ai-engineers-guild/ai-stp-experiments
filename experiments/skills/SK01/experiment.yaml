@@ -9,5 +9,6 @@ variants:
 - pi
 - pi-omp
 observe:
+  probe: Use experiment-sk01 and report its marker. Do not edit files.
   expect:
     marker: AI_STP_SK01

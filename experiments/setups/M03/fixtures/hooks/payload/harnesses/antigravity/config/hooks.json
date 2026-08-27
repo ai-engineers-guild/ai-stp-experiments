@@ -3,12 +3,12 @@
     "PreInvocation": [
       {
         "type": "command",
-        "command": "python config/hooks/h05.py",
+        "command": "python hooks/h05.py",
         "timeout": 10
       },
       {
         "type": "command",
-        "command": "python config/hooks/h06.py",
+        "command": "python hooks/h06.py",
         "timeout": 10
       }
     ]

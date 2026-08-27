@@ -7,6 +7,8 @@ import json
 import shutil
 from pathlib import Path
 
+import yaml
+
 
 def merge(base: dict, override: dict) -> dict:
     result = dict(base)
@@ -22,8 +24,14 @@ def merge(base: dict, override: dict) -> dict:
 def materialize(fixture: Path, harness: str, output: Path) -> None:
     if output.exists():
         raise FileExistsError(output)
+    manifest = fixture / "fixture.yaml"
+    state = yaml.safe_load(manifest.read_text(encoding="utf-8")) if manifest.is_file() else {}
+    variants = state.get("variants", {})
+    if variants and harness not in variants:
+        raise ValueError(f"fixture has no {harness} variant")
+    variant = variants.get(harness, {"payload": f"payload/harnesses/{harness}"})
     common = fixture / "payload" / "common"
-    overlay = fixture / "payload" / "harnesses" / harness
+    overlay = fixture / variant["payload"]
     if not common.is_dir() and not overlay.is_dir():
         raise ValueError(f"fixture has no {harness} variant")
     if common.is_dir():
@@ -32,10 +40,38 @@ def materialize(fixture: Path, harness: str, output: Path) -> None:
         output.mkdir(parents=True)
     if overlay.is_dir():
         shutil.copytree(overlay, output, dirs_exist_ok=True)
-    passport = json.loads((fixture / "passport-patch.json").read_text(encoding="utf-8"))
+    source_subpath = variant.get("source_subpath")
+    authoring_path = variant.get("authoring_path")
+    base_passport = json.loads(
+        (fixture / "passport-patch.json").read_text(encoding="utf-8")
+    )
+    if not source_subpath and base_passport.get("component_type") == "skill":
+        skill_files = list(output.rglob("SKILL.md"))
+        if len(skill_files) != 1:
+            raise ValueError("skill fixture must contain exactly one SKILL.md")
+        source_subpath = skill_files[0].parent.relative_to(output).as_posix()
+        authoring_path = f"skills/{base_passport['name']}"
+    if source_subpath and authoring_path and source_subpath != authoring_path:
+        native_source = output / source_subpath
+        authoring_source = output / authoring_path
+        authoring_source.parent.mkdir(parents=True, exist_ok=True)
+        if native_source == output:
+            authoring_source.mkdir()
+            for item in tuple(output.iterdir()):
+                if item != authoring_source.parent:
+                    item.rename(authoring_source / item.name)
+        else:
+            native_source.rename(authoring_source)
+            directory = native_source.parent
+            while directory != output:
+                directory.rmdir()
+                directory = directory.parent
+    passport = base_passport
     override = fixture / "passport-overrides" / f"{harness}.json"
     if override.is_file():
         passport = merge(passport, json.loads(override.read_text(encoding="utf-8")))
+    if passport.get("component_type") == "skill":
+        passport["entry_points"] = ["SKILL.md"]
     (output / "passport-patch.json").write_text(
         json.dumps(passport, indent=2) + "\n", encoding="utf-8"
     )

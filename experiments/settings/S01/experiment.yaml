@@ -4,6 +4,7 @@ component_type: setting
 fixtures:
 - main
 observe:
+  probe: Start normally and reply with OK; do not inspect protected configuration or use tools.
   expect:
     id: S01
     key: enableTelemetry
