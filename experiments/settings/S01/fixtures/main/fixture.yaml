@@ -20,6 +20,8 @@ variants:
     - settings.json
   antigravity:
     payload: payload/harnesses/antigravity
+    objects:
+    - enableTelemetry
     managed_paths:
     - antigravity-cli/settings.json
   grok-build:

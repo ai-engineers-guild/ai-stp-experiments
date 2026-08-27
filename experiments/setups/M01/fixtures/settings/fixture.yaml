@@ -17,6 +17,9 @@ fixture_type: component
 variants:
   antigravity:
     payload: payload/harnesses/antigravity
+    objects:
+    - enableTelemetry
+    - showTips
     managed_paths:
     - antigravity-cli/settings.json
   grok-build:

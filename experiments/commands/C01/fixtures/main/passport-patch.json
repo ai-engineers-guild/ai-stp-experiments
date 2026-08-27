@@ -13,13 +13,13 @@
     "redistribution_allowed": true
   },
   "managed_paths": [
-    ".agents/commands/experiment-c01.md"
+    "config/skills/experiment-c01/SKILL.md"
   ],
   "native_ids": [
     "experiment-c01"
   ],
   "entry_points": [
-    ".agents/commands/experiment-c01.md"
+    "SKILL.md"
   ],
   "runtime_requirements": [],
   "provides_capabilities": [],

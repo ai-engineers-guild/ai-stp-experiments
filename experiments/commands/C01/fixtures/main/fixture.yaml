@@ -4,11 +4,11 @@ objects:
 - experiment-c01
 variants:
   antigravity:
-    payload: payload/common
+    payload: payload/harnesses/grok-build
     managed_paths:
-    - .agents/commands/experiment-c01.md
-    source_subpath: commands/experiment-c01.md
-    authoring_path: .agents/commands/experiment-c01.md
+    - config/skills/experiment-c01/SKILL.md
+    source_subpath: skills/experiment-c01
+    authoring_path: .agents/skills/experiment-c01
   pi:
     payload: payload/harnesses/pi
     managed_paths:
@@ -22,11 +22,11 @@ variants:
 states:
   baseline:
     paths:
-    - path: .agents/commands/experiment-c01.md
+    - path: config/skills/experiment-c01/SKILL.md
       exists: false
   installed:
     paths:
-    - path: .agents/commands/experiment-c01.md
+    - path: config/skills/experiment-c01/SKILL.md
       exists: true
   restored:
     same_as: baseline
