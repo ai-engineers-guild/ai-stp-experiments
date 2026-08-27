@@ -14,5 +14,8 @@ observe:
   pi_probe:
     mode: exact_input
     input: /experiment-c01
+  antigravity_probe:
+    probe: Use the installed `experiment-c01` skill as the harness-native callable
+      command and report its exact result. Do not edit files.
   expect:
     marker: AI_STP_C01

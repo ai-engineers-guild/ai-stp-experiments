@@ -271,7 +271,10 @@ def main() -> int:
             "variant_available": harness in row["variants"],
             "expected": "runnable" if harness in row["variants"] else "unsupported",
             "observer_prompt": observation_prompt(
-                row["id"], harness, "installed", row["observation"].get("probe"),
+                row["id"], harness, "installed",
+                row["observation"].get(f"{harness}_probe", {}).get(
+                    "probe", row["observation"].get("probe")
+                ),
                 *observation_scope(row, harness),
             ),
         }
