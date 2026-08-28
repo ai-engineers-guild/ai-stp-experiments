@@ -32,6 +32,11 @@ experiments/<category>/<experiment-id>/
 - `installed` — состояние после установки и наблюдения;
 - `restored` — состояние после rollback; обязано совпадать с `baseline`.
 
+Если нативный способ вызова различается, `observe.<harness>_probe.probe`
+переопределяет только read-only probe данного харнесса. Например, один provider
+может проецировать plugin как tool, а другой — как skill внутри plugin. Observer
+проверяет фактическую нативную поверхность и не требует несуществующий вид вызова.
+
 Payload является исходным компонентом, а не готовым target-tree. Если сохранённая
 фикстура повторяет нативную раскладку для удобства чтения, variant объявляет
 `source_subpath` и `authoring_path`: materializer переносит только исходный

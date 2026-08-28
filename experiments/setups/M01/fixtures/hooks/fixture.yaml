@@ -33,9 +33,11 @@ variants:
     payload: payload/harnesses/grok-build
     managed_paths:
     - hooks/hooks.json
-    - hooks/h01.py
-    - hooks/h02.py
+    source_subpath: hooks/hooks.json
+    authoring_path: .grok/hooks/hooks.json
   pi:
     payload: payload/harnesses/pi
     managed_paths:
     - extensions/m01-hooks.ts
+    source_subpath: extensions/m01-hooks.ts
+    authoring_path: .pi/extensions/m01-hooks.ts

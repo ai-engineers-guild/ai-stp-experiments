@@ -1,9 +1,7 @@
 {
   "harness_id": "grok-build",
   "managed_paths": [
-    "hooks/hooks.json",
-    "hooks/h01.py",
-    "hooks/h02.py"
+    "hooks/hooks.json"
   ],
   "entry_points": [
     "hooks.PreToolUse"

@@ -33,3 +33,5 @@ variants:
     - extensions/m01-mcps/.mcp.json
     - extensions/m01-mcps/mcp_servers/m01-mcp-a.py
     - extensions/m01-mcps/mcp_servers/m01-mcp-b.py
+    source_subpath: extensions/m01-mcps
+    authoring_path: .pi/extensions/m01-mcps

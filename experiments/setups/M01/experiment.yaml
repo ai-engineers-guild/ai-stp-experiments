@@ -31,6 +31,13 @@ observe:
     settings:
       enableInstallTelemetry: false
       quietStartup: true
+  antigravity_probe:
+    probe: Invoke both M01 skills and both M01 agents, call MCP tools
+      `m01_mcp_a_probe` and `m01_mcp_b_probe`, then invoke `run_command` once and
+      `list_dir` once so the two declared hooks are exercised through their exact
+      matchers. Confirm startup accepts `enableTelemetry` and `showTips`. Report
+      every marker and each hook decision separately; do not treat an expected
+      hook decision as a failed component invocation. Do not edit files.
   expect:
     skills:
     - M01-skill-a
