@@ -14,11 +14,13 @@ For every runnable experiment:
    provider state and `backup_ref`.
 4. Use `ai-stp` to install/apply only the selected fixture or setup.
 5. Start one fresh target-harness context through that harness's delegate skill
-   and run the matrix row's `observer_prompt` exactly once.
+   and run the matrix row's `observer_prompt` exactly once. Allow at most 120
+   seconds, never start a second observer while one is active, and terminate the
+   entire delegate process tree on timeout.
 6. Verify that the observer reports only the expected logical objects and that
    every declared safe probe actually succeeds.
-7. Use `ai-stp` to rollback the exact `backup_ref` and require provider state
-   `verified`.
+7. In a `finally` path, use `ai-stp` to rollback the exact `backup_ref` and
+   require provider state `verified`, including after observer timeout or crash.
 8. Compare restored managed state mechanically with the backup. Do not call the
    delegate again.
 
@@ -30,3 +32,7 @@ rollback.
 Keep results outside this repository's source tree. Save all plan digests,
 operation IDs, backup refs, provider responses, observer YAML and the final
 report.
+
+Report lifecycle and observation independently. An observer timeout is
+`observer_timeout`, not an install failure; continue only after rollback,
+restored-state comparison and process-tree cleanup have all completed.
