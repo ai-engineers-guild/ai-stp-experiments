@@ -37,6 +37,13 @@ variants:
     - hooks/hooks.json
     source_subpath: hooks/hooks.json
     authoring_path: .grok/hooks/hooks.json
+  codex:
+    payload: payload/harnesses/codex
+    exclude: [config]
+    managed_paths:
+    - hooks.json
+    source_subpath: hooks.json
+    authoring_path: .codex/hooks.json
   pi:
     payload: payload/harnesses/pi
     managed_paths:

@@ -8,6 +8,7 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex
 observe:
   probe: Invoke the installed native prompt command `/experiment-c01` and report
     its exact result. Do not edit files.
@@ -17,5 +18,8 @@ observe:
   antigravity_probe:
     probe: Use the installed `experiment-c01` skill as the harness-native callable
       command and report its exact result. Do not edit files.
+  codex_probe:
+    probe: Invoke the installed custom prompt /experiment-c01 and report its exact
+      result. Do not edit files.
   expect:
     marker: AI_STP_C01

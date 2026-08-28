@@ -18,6 +18,10 @@ variants:
     payload: payload/common
     managed_paths:
     - AGENTS.md
+  codex:
+    payload: payload/common
+    managed_paths:
+    - AGENTS.md
 states:
   baseline:
     paths:

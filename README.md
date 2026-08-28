@@ -42,5 +42,21 @@ probe, and writes the installed-state YAML. It never changes configuration.
 Backup, install, managed-state comparison and rollback belong to the external
 controller and are executed only through `ai-stp`.
 
+Run evidence lives in the ignored `runs/` directory. Refresh the tracked index
+after adding or moving a run:
+
+```bash
+python generate_index.py
+```
+
+`runs/` — только каталог результатов: controllers, runners и исходный код
+исполнения в него не складываются. Исторические JSON/log-файлы сохраняются как
+есть; если старый отчёт содержит прежний абсолютный путь, это историческое
+поле, а не актуальный путь запуска. Актуальное расположение evidence — только
+`C:\Users\User\a_projects\ai-stp-experiments\runs`.
+
+The fixture layer is checked for `codex`, `grok-build`, `antigravity` and `pi`;
+unsupported combinations remain explicit matrix rows.
+
 Generated matrices, state files, results and logs are ignored. The controlling
 controller owns execution evidence outside this declarative corpus.

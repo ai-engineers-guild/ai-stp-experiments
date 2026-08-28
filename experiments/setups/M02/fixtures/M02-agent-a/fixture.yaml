@@ -28,3 +28,11 @@ variants:
     - extensions/M02-agent-a.ts
     source_subpath: extensions/M02-agent-a.ts
     authoring_path: .pi/extensions/M02-agent-a.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - agents/M02-agent-a.md
+    managed_paths:
+    - agents/M02_agent_a.toml
+    source_subpath: agents/M02_agent_a.toml
+    authoring_path: .codex/agents/M02_agent_a.toml

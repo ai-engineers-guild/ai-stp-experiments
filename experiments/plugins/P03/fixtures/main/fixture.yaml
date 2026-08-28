@@ -38,3 +38,11 @@ variants:
     payload: payload/harnesses/pi
     managed_paths:
     - extensions/ai-stp-p03-plugin.ts
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - plugins/cache/local/ai-stp-p03-plugin/1.0.0/.codex-plugin/plugin.json
+    - plugins/cache/local/ai-stp-p03-plugin/1.0.0/plugin.json
+    - plugins/cache/local/ai-stp-p03-plugin/1.0.0/MARKER.txt
+    - plugins/cache/local/ai-stp-p03-plugin/1.0.0/skills/ai-stp-p03-plugin/SKILL.md
+    - config.toml

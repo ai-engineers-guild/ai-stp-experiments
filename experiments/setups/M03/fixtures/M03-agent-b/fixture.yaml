@@ -26,3 +26,11 @@ variants:
     payload: payload/harnesses/pi
     managed_paths:
     - extensions/M03-agent-b.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - agents/M03-agent-b.md
+    managed_paths:
+    - agents/M03_agent_b.toml
+    source_subpath: agents/M03_agent_b.toml
+    authoring_path: .codex/agents/M03_agent_b.toml

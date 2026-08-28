@@ -12,6 +12,9 @@ observe:
     tools: [powershell]
     input: Use the powershell tool exactly once with `Get-ChildItem .`, then report
       the exact denial reason.
+  codex_probe:
+    probe: Run a harmless directory listing through Codex's Bash tool exactly once,
+      then report the hook denial reason. Do not edit files.
   expect:
     id: H01
     event: PreToolUse
@@ -24,3 +27,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

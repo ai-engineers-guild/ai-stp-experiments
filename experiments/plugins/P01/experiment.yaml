@@ -15,6 +15,9 @@ observe:
   grok-build_probe:
     probe: Invoke the installed plugin skill `ai-stp-p01-plugin` and report the
       marker it returns. Do not expect a standalone plugin tool. Do not edit files.
+  codex_probe:
+    probe: Use the installed plugin through Codex's normal plugin interface and
+      report its marker. Do not edit files.
   expect:
     id: P01
     plugin: ai-stp-p01-plugin
@@ -23,3 +26,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

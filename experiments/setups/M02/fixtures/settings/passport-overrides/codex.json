@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "config.toml"
+  ],
+  "entry_points": [
+    "developer_instructions"
+  ]
+}

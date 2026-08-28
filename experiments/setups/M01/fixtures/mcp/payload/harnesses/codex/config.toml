@@ -1,0 +1,43 @@
+[mcp_servers.m01_mcp_a]
+command = "py"
+args = ["-3", "-u", "-c", """
+import json, sys
+for line in sys.stdin:
+    request = json.loads(line)
+    if request.get('id') is None:
+        continue
+    method = request.get('method')
+    result = {'jsonrpc': '2.0', 'id': request.get('id')}
+    if method == 'initialize':
+        result['result'] = {'protocolVersion': '2024-11-05', 'capabilities': {'tools': {}}, 'serverInfo': {'name': 'm01_mcp_a', 'version': '1.0'}}
+    elif method == 'tools/list':
+        result['result'] = {'tools': [{'name': 'm01_mcp_a_probe', 'description': 'Return the M01 MCP A marker.', 'inputSchema': {'type': 'object', 'properties': {}}}]}
+    elif method == 'tools/call':
+        result['result'] = {'content': [{'type': 'text', 'text': 'AI_STP_M01_MCP_A'}]}
+    else:
+        result['result'] = {}
+    print(json.dumps(result), flush=True)
+"""]
+startup_timeout_sec = 20
+
+[mcp_servers.m01_mcp_b]
+command = "py"
+args = ["-3", "-u", "-c", """
+import json, sys
+for line in sys.stdin:
+    request = json.loads(line)
+    if request.get('id') is None:
+        continue
+    method = request.get('method')
+    result = {'jsonrpc': '2.0', 'id': request.get('id')}
+    if method == 'initialize':
+        result['result'] = {'protocolVersion': '2024-11-05', 'capabilities': {'tools': {}}, 'serverInfo': {'name': 'm01_mcp_b', 'version': '1.0'}}
+    elif method == 'tools/list':
+        result['result'] = {'tools': [{'name': 'm01_mcp_b_probe', 'description': 'Return the M01 MCP B marker.', 'inputSchema': {'type': 'object', 'properties': {}}}]}
+    elif method == 'tools/call':
+        result['result'] = {'content': [{'type': 'text', 'text': 'AI_STP_M01_MCP_B'}]}
+    else:
+        result['result'] = {}
+    print(json.dumps(result), flush=True)
+"""]
+startup_timeout_sec = 20

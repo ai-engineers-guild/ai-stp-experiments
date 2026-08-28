@@ -1,0 +1,41 @@
+[mcp_servers.M05_mcp_a]
+command = "py"
+args = ["-3", "-u", "-c", """
+import json, sys
+for line in sys.stdin:
+    request = json.loads(line)
+    method = request.get('method')
+    if method == 'tools/list':
+        result = {'tools': [{'name': 'probe', 'description': 'Returns M05_mcp_a', 'inputSchema': {'type': 'object', 'properties': {}}}]}
+    elif method == 'tools/call':
+        result = {'content': [{'type': 'text', 'text': 'AI_STP_M05_MCP_A'}]}
+    elif 'id' in request:
+        result = {}
+    else:
+        continue
+    if 'id' in request:
+        print(json.dumps({'jsonrpc': '2.0', 'id': request['id'], 'result': result}), flush=True)
+
+"""]
+startup_timeout_sec = 20
+
+[mcp_servers.M05_mcp_b]
+command = "py"
+args = ["-3", "-u", "-c", """
+import json, sys
+for line in sys.stdin:
+    request = json.loads(line)
+    method = request.get('method')
+    if method == 'tools/list':
+        result = {'tools': [{'name': 'probe', 'description': 'Returns M05_mcp_b', 'inputSchema': {'type': 'object', 'properties': {}}}]}
+    elif method == 'tools/call':
+        result = {'content': [{'type': 'text', 'text': 'AI_STP_M05_MCP_B'}]}
+    elif 'id' in request:
+        result = {}
+    else:
+        continue
+    if 'id' in request:
+        print(json.dumps({'jsonrpc': '2.0', 'id': request['id'], 'result': result}), flush=True)
+
+"""]
+startup_timeout_sec = 20

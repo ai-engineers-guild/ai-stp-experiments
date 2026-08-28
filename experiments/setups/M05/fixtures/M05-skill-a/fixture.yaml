@@ -26,3 +26,7 @@ variants:
     payload: payload/common
     managed_paths:
     - skills/M05-skill-a/SKILL.md
+  codex:
+    payload: payload/common
+    managed_paths:
+    - skills/M05-skill-a/SKILL.md

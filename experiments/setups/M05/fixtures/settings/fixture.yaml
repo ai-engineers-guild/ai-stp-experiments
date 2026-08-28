@@ -30,3 +30,9 @@ variants:
     objects:
     - quietStartup
     - enableInstallTelemetry
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml

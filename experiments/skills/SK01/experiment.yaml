@@ -9,6 +9,7 @@ variants:
 - pi
 - pi-omp
 - grok-build
+- codex
 observe:
   probe: Use experiment-sk01 and report its marker. Do not edit files.
   expect:

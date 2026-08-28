@@ -38,6 +38,12 @@ observe:
       matchers. Confirm startup accepts `enableTelemetry` and `showTips`. Report
       every marker and each hook decision separately; do not treat an expected
       hook decision as a failed component invocation. Do not edit files.
+  codex_probe:
+    probe: Invoke $M01-skill-a and $M01-skill-b, spawn both installed custom agents,
+      call MCP tools m01_mcp_a_probe and m01_mcp_b_probe, run a directory listing
+      through Bash to trigger the first hook, run a harmless shell command containing
+      the second hook trigger token, and ask for the installed settings markers.
+      Do not read skill files from disk and do not edit files.
   expect:
     skills:
     - M01-skill-a
@@ -58,3 +64,4 @@ variants:
 - antigravity
 - grok-build
 - pi
+- codex

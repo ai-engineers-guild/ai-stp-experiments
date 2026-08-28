@@ -1,0 +1,18 @@
+{
+  "description": "H01 PreToolUse deny for Codex Bash.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'deny', 'permissionDecisionReason': 'AI_STP_H01_DENY'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'deny', 'permissionDecisionReason': 'AI_STP_H01_DENY'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

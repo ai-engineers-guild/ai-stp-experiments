@@ -1,0 +1,29 @@
+{
+  "description": "Deterministic Codex hook projections for M02.",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PostToolUse', 'additionalContext': 'AI_STP_H03_POSTTOOLUSE'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PostToolUse', 'additionalContext': 'AI_STP_H03_POSTTOOLUSE'}}))\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PostToolUse', 'additionalContext': 'AI_STP_H04_POSTTOOLUSE'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PostToolUse', 'additionalContext': 'AI_STP_H04_POSTTOOLUSE'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

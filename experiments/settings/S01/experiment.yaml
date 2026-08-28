@@ -14,6 +14,8 @@ observe:
     probe: Start normally with the installed settings. If startup accepts the
       configuration without error, report `enableTelemetry`; do not inspect files
       or use tools.
+  codex_probe:
+    probe: "What is the installed settings marker? Do not inspect files or use tools."
   expect:
     id: S01
     key: enableInstallTelemetry
@@ -22,3 +24,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

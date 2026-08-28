@@ -1,0 +1,18 @@
+{
+  "description": "Deterministic Codex PreToolUse projection for H02.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'allow', 'permissionDecisionReason': 'AI_STP_H02_ALLOW'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'allow', 'permissionDecisionReason': 'AI_STP_H02_ALLOW'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

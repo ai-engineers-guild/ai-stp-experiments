@@ -25,6 +25,13 @@ variants:
     payload: payload/common
     managed_paths:
     - .mcp.json
+  codex:
+    payload: payload/harnesses/codex
+    exclude: [.mcp.json]
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml
   pi:
     payload: payload/harnesses/pi
     managed_paths:

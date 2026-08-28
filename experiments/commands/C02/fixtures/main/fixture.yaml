@@ -19,6 +19,12 @@ variants:
     - prompts/experiment-c02.md
     source_subpath: prompts/experiment-c02.md
     authoring_path: .pi/prompts/experiment-c02.md
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - prompts/experiment-c02.md
+    source_subpath: prompts/experiment-c02.md
+    authoring_path: prompts/experiment-c02.md
 states:
   baseline:
     paths:

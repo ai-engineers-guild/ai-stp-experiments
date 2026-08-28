@@ -1,0 +1,29 @@
+{
+  "description": "Deterministic Codex hook projections for M03.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': 'AI_STP_H05_PREINVOCATION'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': 'AI_STP_H05_PREINVOCATION'}}))\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': 'AI_STP_H06_PREINVOCATION'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'UserPromptSubmit', 'additionalContext': 'AI_STP_H06_PREINVOCATION'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

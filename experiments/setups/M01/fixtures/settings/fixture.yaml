@@ -26,6 +26,12 @@ variants:
     payload: payload/harnesses/grok-build
     managed_paths:
     - config.toml
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml
   pi:
     payload: payload/harnesses/pi
     managed_paths:

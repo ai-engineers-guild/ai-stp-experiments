@@ -4,6 +4,8 @@ component_type: plugin
 fixtures:
 - main
 observe:
+  codex_probe:
+    probe: "Use the installed P04 plugin through Codex's normal plugin interface and report its marker. Do not edit files."
   expect:
     id: P04
     plugin: ai-stp-p04-plugin
@@ -17,3 +19,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "prompts/experiment-c01.md"
+  ],
+  "entry_points": [
+    "prompts/experiment-c01.md"
+  ]
+}

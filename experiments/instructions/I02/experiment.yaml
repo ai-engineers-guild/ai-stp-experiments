@@ -9,6 +9,9 @@ variants:
 - pi
 - pi-omp
 - grok-build
+- codex
 observe:
+  codex_probe:
+    probe: "Report the marker supplied by the active root instruction. Do not read configuration files to answer."
   expect:
     marker: AI_STP_I02

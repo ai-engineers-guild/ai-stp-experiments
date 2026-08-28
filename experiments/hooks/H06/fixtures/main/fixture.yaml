@@ -31,3 +31,11 @@ variants:
     payload: payload/harnesses/pi
     managed_paths:
     - extensions/experiment-h06.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - config
+    managed_paths:
+    - hooks.json
+    source_subpath: hooks.json
+    authoring_path: .codex/hooks.json

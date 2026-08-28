@@ -1,4 +1,5 @@
 import json
+import tomllib
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -126,6 +127,33 @@ class MatrixTests(unittest.TestCase):
             self.assertEqual(len(generated), 81)
             self.assertTrue(all(row["expected"] == "runnable" for row in generated))
 
+    def test_codex_matrix_has_no_unsupported_experiments(self) -> None:
+        with TemporaryDirectory() as directory:
+            output = Path(directory) / "matrix.yaml"
+            argv = [
+                "matrix.py", "generate", "--harness", "codex", "--os", "windows",
+                "--output", str(output),
+            ]
+            with patch("sys.argv", argv):
+                self.assertEqual(matrix.main(), 0)
+            generated = matrix.load(output)["experiments"]
+            self.assertEqual(len(generated), 81)
+            self.assertTrue(all(row["expected"] == "runnable" for row in generated))
+
+    def test_codex_native_payloads_parse(self) -> None:
+        root = matrix.EXPERIMENTS
+        configs = list(root.rglob("payload/harnesses/codex/config.toml"))
+        self.assertGreater(len(configs), 0)
+        for path in configs:
+            tomllib.loads(path.read_text(encoding="utf-8"))
+        for path in root.rglob("payload/harnesses/codex/hooks.json"):
+            hooks = json.loads(path.read_text(encoding="utf-8"))["hooks"]
+            self.assertTrue(set(hooks) <= {
+                "PreToolUse", "PermissionRequest", "PostToolUse", "PreCompact",
+                "PostCompact", "SessionStart", "SessionEnd", "SubagentStart",
+                "SubagentStop", "UserPromptSubmit", "Stop",
+            })
+
     def test_antigravity_skill_materializes_as_authoring_source(self) -> None:
         with TemporaryDirectory() as directory:
             output = Path(directory) / "out"
@@ -186,6 +214,24 @@ class MatrixTests(unittest.TestCase):
                         self.assertFalse((output / ".mcp.json").exists())
                     count += 1
             self.assertGreater(count, 0)
+
+    def test_all_primary_harness_variants_materialize(self) -> None:
+        with TemporaryDirectory() as directory:
+            for harness in ("codex", "grok-build", "antigravity", "pi"):
+                count = 0
+                for row in matrix.cases():
+                    if harness not in row["variants"]:
+                        continue
+                    for fixture_id in row["fixtures"]:
+                        output = Path(directory) / harness / row["id"] / fixture_id
+                        fixture = matrix.ROOT / row["path"] / "fixtures" / fixture_id
+                        materialize.materialize(fixture, harness, output)
+                        passport = json.loads(
+                            (output / "passport-patch.json").read_text(encoding="utf-8")
+                        )
+                        self.assertEqual(passport["harness_id"], harness)
+                        count += 1
+                self.assertGreater(count, 0, harness)
 
     def test_observer_prompt_has_stable_state_contract(self) -> None:
         prompt = matrix.observation_prompt("SK01", "antigravity", "installed")

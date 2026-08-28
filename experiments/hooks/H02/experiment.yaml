@@ -4,6 +4,8 @@ component_type: hook
 fixtures:
 - main
 observe:
+  codex_probe:
+    probe: "Run a harmless directory listing through Codex's Bash tool exactly once, then report the hook decision reason. Do not edit files."
   expect:
     id: H02
     event: PreToolUse
@@ -22,3 +24,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

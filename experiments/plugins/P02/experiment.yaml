@@ -4,6 +4,8 @@ component_type: plugin
 fixtures:
 - main
 observe:
+  codex_probe:
+    probe: "Use the installed P02 plugin through Codex's normal plugin interface and report its marker. Do not edit files."
   expect:
     id: P02
     plugin: ai-stp-p02-plugin
@@ -17,3 +19,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

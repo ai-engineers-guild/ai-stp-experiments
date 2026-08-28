@@ -16,6 +16,8 @@ minimum_objects:
   setting: 2
   agent: 2
 observe:
+  codex_probe:
+    probe: "Use every installed M02 Codex component and report every marker and hook decision. Do not edit files."
   expect:
     skills:
     - M02-skill-a
@@ -40,3 +42,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

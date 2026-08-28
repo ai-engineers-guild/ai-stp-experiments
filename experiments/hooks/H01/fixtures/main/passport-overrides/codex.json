@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "hooks.json"
+  ],
+  "entry_points": [
+    "hooks.PreToolUse"
+  ]
+}

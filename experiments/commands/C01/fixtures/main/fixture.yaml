@@ -19,6 +19,12 @@ variants:
     payload: payload/harnesses/grok-build
     managed_paths:
     - skills/experiment-c01/SKILL.md
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - prompts/experiment-c01.md
+    source_subpath: prompts/experiment-c01.md
+    authoring_path: prompts/experiment-c01.md
 states:
   baseline:
     paths:

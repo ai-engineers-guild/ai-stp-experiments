@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "agents/experiment_a03.toml"
+  ],
+  "entry_points": [
+    "agents/experiment_a03.toml"
+  ]
+}

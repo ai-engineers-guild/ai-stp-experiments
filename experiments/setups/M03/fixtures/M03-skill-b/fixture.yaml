@@ -26,3 +26,7 @@ variants:
     payload: payload/harnesses/pi
     managed_paths:
     - skills/M03-skill-b/SKILL.md
+  codex:
+    payload: payload/harnesses/codex
+    managed_paths:
+    - skills/M03-skill-b/SKILL.md

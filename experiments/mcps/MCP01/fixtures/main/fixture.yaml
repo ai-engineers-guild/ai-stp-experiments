@@ -21,6 +21,13 @@ variants:
     exclude: [.mcp.json]
     managed_paths:
     - config.toml
+  codex:
+    payload: payload/harnesses/codex
+    exclude: [.mcp.json]
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml
 states:
   baseline:
     paths:

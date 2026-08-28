@@ -9,6 +9,9 @@ variants:
 - pi
 - pi-omp
 - grok-build
+- codex
 observe:
+  codex_probe:
+    probe: "Use the installed SK25 skill and report its marker. Do not edit files."
   expect:
     marker: AI_STP_SK25

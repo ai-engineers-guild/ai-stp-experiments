@@ -24,6 +24,13 @@ variants:
     payload: payload/common
     managed_paths:
     - agents/M01-agent-b.md
+  codex:
+    payload: payload/harnesses/codex
+    exclude: [agents/M01-agent-b.md]
+    managed_paths:
+    - agents/M01-agent-b.toml
+    source_subpath: agents/M01-agent-b.toml
+    authoring_path: .codex/agents/M01-agent-b.toml
   pi:
     payload: payload/harnesses/pi
     managed_paths:

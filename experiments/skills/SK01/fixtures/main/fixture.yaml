@@ -19,6 +19,10 @@ variants:
     payload: payload/common
     managed_paths:
     - skills/experiment-sk01/SKILL.md
+  codex:
+    payload: payload/common
+    managed_paths:
+    - skills/experiment-sk01/SKILL.md
 states:
   baseline:
     paths:

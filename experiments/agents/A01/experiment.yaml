@@ -8,8 +8,12 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex
 observe:
   probe: Use the installed agent experiment_a01 through the harness's normal agent
     interface and report its reply. Do not edit files.
+  codex_probe:
+    probe: Spawn the installed custom agent named experiment_a01 and report its reply.
+      Do not edit files.
   expect:
     marker: AI_STP_A01

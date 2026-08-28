@@ -1,0 +1,18 @@
+{
+  "description": "Deterministic Codex Stop projection for H07.",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H07_POSTINVOCATION'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H07_POSTINVOCATION'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

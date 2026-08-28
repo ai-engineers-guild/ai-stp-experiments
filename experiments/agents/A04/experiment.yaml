@@ -8,7 +8,10 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex
 observe:
+  codex_probe:
+    probe: "Spawn the installed custom agent for A04 and report its reply. Do not edit files."
   expect:
     marker: AI_STP_A04
   probe: Use the installed agent experiment_a04 through Pi's normal agent tool interface

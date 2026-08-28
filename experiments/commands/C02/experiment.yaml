@@ -8,7 +8,10 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex
 observe:
+  codex_probe:
+    probe: "Invoke the installed custom prompt for C02 and report its exact result. Do not edit files."
   expect:
     marker: AI_STP_C02
   probe: Invoke the installed native prompt command `/experiment-c02` and report

@@ -17,6 +17,14 @@ variants:
     - extensions/experiment-a02.ts
     source_subpath: extensions/experiment-a02.ts
     authoring_path: .pi/extensions/experiment-a02.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - agents/experiment-a02.md
+    managed_paths:
+    - agents/experiment_a02.toml
+    source_subpath: agents/experiment_a02.toml
+    authoring_path: .codex/agents/experiment_a02.toml
 states:
   baseline:
     paths:

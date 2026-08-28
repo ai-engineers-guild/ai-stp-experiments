@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "skills/M04-skill-a/SKILL.md"
+  ],
+  "entry_points": [
+    "SKILL.md"
+  ]
+}

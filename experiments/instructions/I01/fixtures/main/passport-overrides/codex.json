@@ -1,0 +1,9 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "AGENTS.md"
+  ],
+  "entry_points": [
+    "AGENTS.md"
+  ]
+}

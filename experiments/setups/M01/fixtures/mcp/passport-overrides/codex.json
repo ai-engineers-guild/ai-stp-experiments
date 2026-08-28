@@ -1,0 +1,10 @@
+{
+  "harness_id": "codex",
+  "managed_paths": [
+    "config.toml"
+  ],
+  "entry_points": [
+    "mcp_servers.m01_mcp_a",
+    "mcp_servers.m01_mcp_b"
+  ]
+}

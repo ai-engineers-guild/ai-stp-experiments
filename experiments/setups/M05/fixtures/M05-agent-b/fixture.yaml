@@ -28,3 +28,11 @@ variants:
     - extensions/M05-agent-b.ts
     source_subpath: extensions/M05-agent-b.ts
     authoring_path: .pi/extensions/M05-agent-b.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - agents/M05-agent-b.md
+    managed_paths:
+    - agents/M05_agent_b.toml
+    source_subpath: agents/M05_agent_b.toml
+    authoring_path: .codex/agents/M05_agent_b.toml

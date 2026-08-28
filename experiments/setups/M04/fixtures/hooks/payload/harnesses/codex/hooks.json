@@ -1,0 +1,29 @@
+{
+  "description": "Deterministic Codex hook projections for M04.",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H07_POSTINVOCATION'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H07_POSTINVOCATION'}}))\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H08_POSTINVOCATION'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'additionalContext': 'AI_STP_H08_POSTINVOCATION'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

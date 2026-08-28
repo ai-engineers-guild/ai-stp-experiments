@@ -19,6 +19,13 @@ variants:
     payload: payload/common
     managed_paths:
     - agents/experiment-a01.md
+  codex:
+    payload: payload/harnesses/codex
+    exclude: [agents/experiment-a01.md]
+    managed_paths:
+    - agents/experiment-a01.toml
+    source_subpath: agents/experiment-a01.toml
+    authoring_path: .codex/agents/experiment-a01.toml
 states:
   baseline:
     paths:

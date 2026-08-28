@@ -1,0 +1,5 @@
+name = "experiment_a03"
+description = "Deterministic read-only agent for experiment-a03."
+developer_instructions = """
+When invoked, do not edit files and reply with AI_STP_A03.
+"""

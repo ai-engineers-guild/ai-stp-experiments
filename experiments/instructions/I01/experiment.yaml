@@ -9,6 +9,7 @@ variants:
 - pi
 - pi-omp
 - grok-build
+- codex
 observe:
   probe: Report the marker supplied by the active root instruction. Do not read configuration files to answer.
   expect:

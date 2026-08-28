@@ -1,0 +1,18 @@
+{
+  "description": "M01 Codex hooks for Bash PreToolUse.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json,sys; ev=json.load(sys.stdin); cmd=((ev.get('tool_input') or {}).get('command') or ''); reason='AI_STP_H02_DENY' if 'AI_STP_H02_TRIGGER' in cmd else 'AI_STP_H01_DENY'; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'deny', 'permissionDecisionReason': reason}}))\"",
+            "commandWindows": "py -3 -c \"import json,sys; ev=json.load(sys.stdin); cmd=((ev.get('tool_input') or {}).get('command') or ''); reason='AI_STP_H02_DENY' if 'AI_STP_H02_TRIGGER' in cmd else 'AI_STP_H01_DENY'; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'PreToolUse', 'permissionDecision': 'deny', 'permissionDecisionReason': reason}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

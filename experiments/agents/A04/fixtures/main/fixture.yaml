@@ -17,6 +17,14 @@ variants:
     - extensions/experiment-a04.ts
     source_subpath: extensions/experiment-a04.ts
     authoring_path: .pi/extensions/experiment-a04.ts
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - agents/experiment-a04.md
+    managed_paths:
+    - agents/experiment_a04.toml
+    source_subpath: agents/experiment_a04.toml
+    authoring_path: .codex/agents/experiment_a04.toml
 states:
   baseline:
     paths:

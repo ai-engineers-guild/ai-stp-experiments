@@ -22,6 +22,14 @@ variants:
     - extensions/experiment-mcp12/index.ts
     - extensions/experiment-mcp12/.mcp.json
     - extensions/experiment-mcp12/mcp_servers/experiment-mcp12.py
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - .mcp.json
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml
 states:
   baseline:
     paths:

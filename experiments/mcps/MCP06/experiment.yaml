@@ -8,7 +8,10 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex
 observe:
+  codex_probe:
+    probe: "Call the installed MCP tool that returns AI_STP_MCP06 through Codex's normal MCP interface and report its exact result. Do not edit files."
   expect:
     marker: AI_STP_MCP06
   probe: Call the installed MCP tool that returns AI_STP_MCP06 through Pi's normal

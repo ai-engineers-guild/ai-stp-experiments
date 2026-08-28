@@ -29,3 +29,11 @@ variants:
     - extensions/m05-mcps/package.json
     - extensions/m05-mcps/index.ts
     - extensions/m05-mcps/.mcp.json
+  codex:
+    payload: payload/harnesses/codex
+    exclude:
+    - .mcp.json
+    managed_paths:
+    - config.toml
+    source_subpath: config.toml
+    authoring_path: .codex/config.toml

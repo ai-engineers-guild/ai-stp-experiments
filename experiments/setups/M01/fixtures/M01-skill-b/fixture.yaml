@@ -22,6 +22,10 @@ variants:
     payload: payload/common
     managed_paths:
     - skills/M01-skill-b/SKILL.md
+  codex:
+    payload: payload/common
+    managed_paths:
+    - skills/M01-skill-b/SKILL.md
   pi:
     payload: payload/common
     managed_paths:

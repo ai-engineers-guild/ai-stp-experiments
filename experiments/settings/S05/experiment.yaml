@@ -4,6 +4,8 @@ component_type: setting
 fixtures:
 - main
 observe:
+  codex_probe:
+    probe: "What is the installed S05 settings marker? Do not inspect files or use tools."
   expect:
     id: S05
     key: quietStartup
@@ -18,3 +20,4 @@ variants:
 - antigravity
 - pi
 - grok-build
+- codex

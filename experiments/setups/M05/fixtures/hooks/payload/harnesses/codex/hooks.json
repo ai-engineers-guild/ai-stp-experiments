@@ -1,0 +1,29 @@
+{
+  "description": "Deterministic Codex hook projections for M05.",
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'permissionDecision': 'stop', 'permissionDecisionReason': 'AI_STP_H09_STOP'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'permissionDecision': 'stop', 'permissionDecisionReason': 'AI_STP_H09_STOP'}}))\"",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'permissionDecision': 'stop', 'permissionDecisionReason': 'AI_STP_H10_STOP'}}))\"",
+            "commandWindows": "py -3 -c \"import json; print(json.dumps({'hookSpecificOutput': {'hookEventName': 'Stop', 'permissionDecision': 'stop', 'permissionDecisionReason': 'AI_STP_H10_STOP'}}))\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
