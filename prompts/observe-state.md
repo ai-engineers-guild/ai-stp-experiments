@@ -18,8 +18,9 @@ The controller supplies these two scopes:
 
 {probe_instruction}
 
-Write exactly this YAML to `{state_file}`. Do not add keys, notes, comments,
-timestamps, environment data, raw conversations or free-form explanations:
+Return exactly this YAML as your final response. The controller saves it as
+`{state_file}`. Do not write files or add keys, notes, comments, timestamps,
+environment data, raw conversations or free-form explanations:
 
 ```yaml
 schema_version: 2

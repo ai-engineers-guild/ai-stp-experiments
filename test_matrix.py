@@ -189,7 +189,8 @@ class MatrixTests(unittest.TestCase):
 
     def test_observer_prompt_has_stable_state_contract(self) -> None:
         prompt = matrix.observation_prompt("SK01", "antigravity", "installed")
-        self.assertIn("state/SK01-antigravity-installed.yaml", prompt)
+        self.assertIn("controller saves it as", prompt)
+        self.assertIn("Do not write files", prompt)
         self.assertIn("Report facts observed in this new context", prompt)
         self.assertIn("expected_logical_objects:", prompt)
         self.assertIn("logical_objects:", prompt)

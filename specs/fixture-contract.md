@@ -87,6 +87,8 @@ Observer YAML является наблюдением харнесса, а не 
 - harness overlay не заменяет общий manifest или паспорт;
 - setup содержит минимум по два skill, hook, mcp, setting и agent;
 - для каждой строки матрицы генерируется ровно один installed observer prompt;
+- observer возвращает строгий YAML в финальном ответе, а state-файл сохраняет
+  controller; observer не пишет evidence сам;
 - observer только инвентаризирует видимые объекты и не выполняет sample task;
 - lifecycle не кодируется списком команд в этом репозитории;
 - одна команда строит матрицу по OS, harness, category, experiment и fixture.
