@@ -24,7 +24,7 @@ variants:
     - config/hooks.json
     - config/hooks/h01.py
     source_subpath: config
-    authoring_path: .agents/hooks
+    authoring_path: .agents
   pi:
     payload: payload/harnesses/pi
     managed_paths:

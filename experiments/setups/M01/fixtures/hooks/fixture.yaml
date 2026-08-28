@@ -30,7 +30,7 @@ variants:
     - config/hooks/h01.py
     - config/hooks/h02.py
     source_subpath: config
-    authoring_path: .agents/hooks
+    authoring_path: .agents
   grok-build:
     payload: payload/harnesses/grok-build
     managed_paths:
