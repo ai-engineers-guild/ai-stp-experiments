@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd /d /s /c py -3 \"%USERPROFILE%\\.gemini\\config\\hooks\\h01.py\"",
+            "command": "py -3 hooks/h01.py",
             "timeout": 10
           }
         ]
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cmd /d /s /c py -3 \"%USERPROFILE%\\.gemini\\config\\hooks\\h02.py\"",
+            "command": "py -3 hooks/h02.py",
             "timeout": 10
           }
         ]
