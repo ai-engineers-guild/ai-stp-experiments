@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "py -3 -c \"import json;print(json.dumps({'decision':'allow','reason':'AI_STP_H01_ALLOW'}))\"",
+            "command": "cmd /d /s /c py -3 \"%USERPROFILE%\\.gemini\\config\\hooks\\h01.py\"",
             "timeout": 10
           }
         ]
@@ -16,7 +16,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "py -3 -c \"import json;print(json.dumps({'decision':'allow','reason':'AI_STP_H02_ALLOW'}))\"",
+            "command": "cmd /d /s /c py -3 \"%USERPROFILE%\\.gemini\\config\\hooks\\h02.py\"",
             "timeout": 10
           }
         ]

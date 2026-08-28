@@ -27,8 +27,10 @@ variants:
     payload: payload/harnesses/antigravity
     managed_paths:
     - config/hooks.json
-    source_subpath: config/hooks.json
-    authoring_path: .agents/hooks.json
+    - config/hooks/h01.py
+    - config/hooks/h02.py
+    source_subpath: config
+    authoring_path: .agents/hooks
   grok-build:
     payload: payload/harnesses/grok-build
     managed_paths:

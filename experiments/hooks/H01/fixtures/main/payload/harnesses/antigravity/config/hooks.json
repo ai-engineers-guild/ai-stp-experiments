@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "py -3 -c \"import json;print(json.dumps({'decision':'deny','reason':'AI_STP_H01_DENY'}))\"",
+            "command": "cmd /d /s /c py -3 \"%USERPROFILE%\\.gemini\\config\\hooks\\h01.py\"",
             "timeout": 10
           }
         ]
