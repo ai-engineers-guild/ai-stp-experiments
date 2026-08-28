@@ -34,5 +34,6 @@ variants:
     authoring_path: .codex/config.toml
   pi:
     payload: payload/harnesses/pi
+    exclude: [.pi]
     managed_paths:
     - settings.json

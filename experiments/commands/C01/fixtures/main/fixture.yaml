@@ -4,23 +4,27 @@ objects:
 - experiment-c01
 variants:
   antigravity:
-    payload: payload/harnesses/grok-build
+    payload: payload/harnesses/antigravity
+    exclude: [commands]
     managed_paths:
     - config/skills/experiment-c01/SKILL.md
     source_subpath: skills/experiment-c01
     authoring_path: .agents/skills/experiment-c01
   pi:
     payload: payload/harnesses/pi
+    exclude: [commands]
     managed_paths:
     - prompts/experiment-c01.md
     source_subpath: prompts/experiment-c01.md
     authoring_path: .pi/prompts/experiment-c01.md
   grok-build:
     payload: payload/harnesses/grok-build
+    exclude: [commands]
     managed_paths:
     - skills/experiment-c01/SKILL.md
   codex:
     payload: payload/harnesses/codex
+    exclude: [commands]
     managed_paths:
     - prompts/experiment-c01.md
     source_subpath: prompts/experiment-c01.md

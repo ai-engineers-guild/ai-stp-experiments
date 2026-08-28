@@ -27,6 +27,7 @@ variants:
     authoring_path: .agents
   pi:
     payload: payload/harnesses/pi
+    exclude: [config]
     managed_paths:
     - extensions/experiment-h01.ts
   grok-build:

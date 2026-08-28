@@ -11,6 +11,8 @@ DENY = [
     "secrets.json", ".mcp.json", "claude_desktop_config.json", "*.ovpn",
 ]
 ALLOW = [".env.example", "example.credentials.json", "credentials.example.json"]
+# Deterministic MCP documents are fixture payload, not credentials or live config.
+FIXTURE_ALLOW = ["experiments/**/fixtures/**/*.mcp.json"]
 
 
 def git_files(all_files: bool) -> list[str]:
@@ -34,6 +36,8 @@ def main() -> int:
     blocked = []
     for path in git_files(args.all):
         if matches(path, ALLOW):
+            continue
+        if matches(path, FIXTURE_ALLOW):
             continue
         if matches(path, DENY):
             blocked.append(path)

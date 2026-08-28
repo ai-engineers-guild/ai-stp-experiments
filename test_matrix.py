@@ -192,6 +192,22 @@ class MatrixTests(unittest.TestCase):
                 materialize.materialize(root / fixture, "antigravity", output)
                 self.assertTrue((output / "skills" / fixture / "SKILL.md").is_file())
 
+    def test_native_overlays_exclude_portable_siblings(self) -> None:
+        cases = (
+            ("commands/C01/fixtures/main", "antigravity", "commands", ".agents/skills/experiment-c01/SKILL.md"),
+            ("commands/C01/fixtures/main", "pi", "commands", ".pi/prompts/experiment-c01.md"),
+            ("hooks/H01/fixtures/main", "pi", "config", "extensions/experiment-h01.ts"),
+            ("plugins/P01/fixtures/main", "antigravity", "plugins", ".agents/plugins/ai-stp-p01-plugin/plugin.json"),
+            ("plugins/P01/fixtures/main", "pi", "plugins", "extensions/ai-stp-p01-plugin.ts"),
+            ("setups/M01/fixtures/mcp", "pi", ".mcp.json", ".pi/extensions/m01-mcps/index.ts"),
+        )
+        with TemporaryDirectory() as directory:
+            for fixture, harness, excluded, expected in cases:
+                output = Path(directory) / harness / fixture
+                materialize.materialize(matrix.EXPERIMENTS / fixture, harness, output)
+                self.assertFalse((output / excluded).exists(), (fixture, harness, excluded))
+                self.assertTrue((output / expected).is_file(), (fixture, harness, expected))
+
     def test_all_grok_variants_materialize(self) -> None:
         with TemporaryDirectory() as directory:
             count = 0

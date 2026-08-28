@@ -24,10 +24,12 @@ fixture_type: component
 variants:
   pi:
     payload: payload/harnesses/pi
+    exclude: [plugins]
     managed_paths:
     - extensions/ai-stp-p01-plugin.ts
   antigravity:
     payload: payload/harnesses/antigravity
+    exclude: [plugins]
     managed_paths:
     - config/plugins/ai-stp-p01-plugin/MARKER.txt
     - config/plugins/ai-stp-p01-plugin/plugin.json

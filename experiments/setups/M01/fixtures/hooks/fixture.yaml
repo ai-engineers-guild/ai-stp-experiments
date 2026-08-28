@@ -46,6 +46,7 @@ variants:
     authoring_path: .codex/hooks.json
   pi:
     payload: payload/harnesses/pi
+    exclude: [config]
     managed_paths:
     - extensions/m01-hooks.ts
     source_subpath: extensions/m01-hooks.ts

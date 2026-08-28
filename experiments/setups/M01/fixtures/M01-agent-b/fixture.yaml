@@ -33,6 +33,7 @@ variants:
     authoring_path: .codex/agents/M01-agent-b.toml
   pi:
     payload: payload/harnesses/pi
+    exclude: [agents]
     managed_paths:
     - extensions/M01-agent-b.ts
     source_subpath: extensions/M01-agent-b.ts

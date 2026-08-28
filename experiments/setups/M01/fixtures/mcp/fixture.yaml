@@ -34,6 +34,7 @@ variants:
     authoring_path: .codex/config.toml
   pi:
     payload: payload/harnesses/pi
+    exclude: [.mcp.json]
     managed_paths:
     - extensions/m01-mcps/package.json
     - extensions/m01-mcps/index.ts
