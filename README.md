@@ -1,6 +1,6 @@
 # ai-stp-experiments
 
-Приватный декларативный corpus для проверки `ai-stp`: эксперименты, фикстуры,
+Декларативный corpus для проверки `ai-stp`: эксперименты, фикстуры,
 паспорта и read-only observer prompts. Это не runtime-проект и не реализация
 `ai-stp`.
 
