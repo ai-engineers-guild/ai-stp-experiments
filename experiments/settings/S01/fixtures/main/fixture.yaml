@@ -18,6 +18,8 @@ variants:
     payload: payload/harnesses/pi
     managed_paths:
     - settings.json
+    source_subpath: settings.json
+    authoring_path: .pi/settings.json
   antigravity:
     payload: payload/harnesses/antigravity
     objects:
@@ -28,6 +30,8 @@ variants:
     payload: payload/harnesses/grok-build
     managed_paths:
     - config.toml
+    source_subpath: config.toml
+    authoring_path: .grok/config.toml
   codex:
     payload: payload/harnesses/codex
     managed_paths:

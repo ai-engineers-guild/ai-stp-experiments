@@ -196,9 +196,9 @@ class MatrixTests(unittest.TestCase):
         cases = (
             ("commands/C01/fixtures/main", "antigravity", "commands", ".agents/skills/experiment-c01/SKILL.md"),
             ("commands/C01/fixtures/main", "pi", "commands", ".pi/prompts/experiment-c01.md"),
-            ("hooks/H01/fixtures/main", "pi", "config", "extensions/experiment-h01.ts"),
+            ("hooks/H01/fixtures/main", "pi", "config", ".pi/extensions/experiment-h01.ts"),
             ("plugins/P01/fixtures/main", "antigravity", "plugins", ".agents/plugins/ai-stp-p01-plugin/plugin.json"),
-            ("plugins/P01/fixtures/main", "pi", "plugins", "extensions/ai-stp-p01-plugin.ts"),
+            ("plugins/P01/fixtures/main", "pi", "plugins", ".pi/extensions/ai-stp-p01-plugin.ts"),
             ("setups/M01/fixtures/mcp", "pi", ".mcp.json", ".pi/extensions/m01-mcps/index.ts"),
         )
         with TemporaryDirectory() as directory:
@@ -226,8 +226,13 @@ class MatrixTests(unittest.TestCase):
                     )
                     self.assertEqual(passport["harness_id"], "grok-build")
                     if row["component_type"] == "mcp":
-                        self.assertTrue((output / "config.toml").is_file())
-                        self.assertFalse((output / ".mcp.json").exists())
+                        variant = matrix.load(
+                            matrix.ROOT / row["path"] / "fixtures" / fixture_id / "fixture.yaml"
+                        )["variants"]["grok-build"]
+                        expected = variant.get("authoring_path") or variant["managed_paths"][0]
+                        self.assertTrue((output / expected).is_file(), expected)
+                        if expected != ".mcp.json":
+                            self.assertFalse((output / ".mcp.json").exists())
                     count += 1
             self.assertGreater(count, 0)
 

@@ -27,6 +27,8 @@ variants:
     exclude: [plugins]
     managed_paths:
     - extensions/ai-stp-p01-plugin.ts
+    source_subpath: extensions/ai-stp-p01-plugin.ts
+    authoring_path: .pi/extensions/ai-stp-p01-plugin.ts
   antigravity:
     payload: payload/harnesses/antigravity
     exclude: [plugins]
@@ -42,11 +44,12 @@ variants:
     - plugins/ai-stp-p01-plugin/MARKER.txt
     - plugins/ai-stp-p01-plugin/plugin.json
     - plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md
+    source_subpath: plugins/ai-stp-p01-plugin
+    authoring_path: .grok/plugins/ai-stp-p01-plugin
   codex:
     payload: payload/harnesses/codex
     managed_paths:
-    - plugins/cache/local/ai-stp-p01-plugin/1.0.0/.codex-plugin/plugin.json
-    - plugins/cache/local/ai-stp-p01-plugin/1.0.0/plugin.json
-    - plugins/cache/local/ai-stp-p01-plugin/1.0.0/MARKER.txt
-    - plugins/cache/local/ai-stp-p01-plugin/1.0.0/skills/ai-stp-p01-plugin/SKILL.md
-    - config.toml
+    - plugins/ai-stp-p01-plugin/.codex-plugin/plugin.json
+    - plugins/ai-stp-p01-plugin/MARKER.txt
+    - plugins/ai-stp-p01-plugin/plugin.json
+    - plugins/ai-stp-p01-plugin/skills/ai-stp-p01-plugin/SKILL.md

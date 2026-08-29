@@ -21,6 +21,8 @@ variants:
     exclude: [.mcp.json]
     managed_paths:
     - config.toml
+    source_subpath: config.toml
+    authoring_path: .grok/config.toml
   codex:
     payload: payload/harnesses/codex
     exclude: [.mcp.json]

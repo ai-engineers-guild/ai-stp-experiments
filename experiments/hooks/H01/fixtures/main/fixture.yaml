@@ -30,6 +30,8 @@ variants:
     exclude: [config]
     managed_paths:
     - extensions/experiment-h01.ts
+    source_subpath: extensions/experiment-h01.ts
+    authoring_path: .pi/extensions/experiment-h01.ts
   grok-build:
     payload: payload/harnesses/grok-build
     managed_paths:

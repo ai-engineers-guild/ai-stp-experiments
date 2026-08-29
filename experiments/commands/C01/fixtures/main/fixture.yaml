@@ -22,6 +22,8 @@ variants:
     exclude: [commands]
     managed_paths:
     - skills/experiment-c01/SKILL.md
+    source_subpath: skills/experiment-c01
+    authoring_path: .grok/skills/experiment-c01
   codex:
     payload: payload/harnesses/codex
     exclude: [commands]
