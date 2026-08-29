@@ -4,6 +4,8 @@
 паспорта и read-only observer prompts. Это не runtime-проект и не реализация
 `ai-stp`.
 
+Быстрый старт: [QUICKSTART.md](QUICKSTART.md). Лицензия: [LICENSE](LICENSE).
+
 ## Граница проекта
 
 В репозитории ровно 81 логический experiment в девяти категориях:
